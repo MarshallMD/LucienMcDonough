@@ -96,7 +96,7 @@
   }
   .focus.drained .nm b{color:var(--dim);}
   .focus.over .nm b{color:var(--red-hi);}
-  .pips{display:flex;gap:9px;flex:none;}
+  .pips{display:flex;gap:8px;flex:none;}
   .pip{
     width:21px;height:21px;border-radius:50%;flex:none;position:relative;
     background:radial-gradient(circle at 34% 30%,
@@ -115,8 +115,9 @@
   }
   @media (prefers-reduced-motion:no-preference){
     .pip:not(.out){animation:ember 2.8s ease-in-out infinite;}
-    .pip:nth-child(2){animation-delay:-.9s;}
-    .pip:nth-child(3){animation-delay:-1.8s;}
+    .pip:nth-child(2){animation-delay:-.7s;}
+    .pip:nth-child(3){animation-delay:-1.4s;}
+    .pip:nth-child(4){animation-delay:-2.1s;}
     @keyframes ember{
       0%,100%{box-shadow:0 0 7px rgba(232,72,59,.7),0 0 17px rgba(232,72,59,.28),
                          inset 0 0 4px rgba(255,196,186,.5);}
@@ -397,7 +398,7 @@
     <div class="focus" id="focusRow">
       <span class="nm">Focus points<b id="focusCount">3 of 3 left</b></span>
       <span class="pips">
-        <span class="pip" data-i="0"></span><span class="pip" data-i="1"></span><span class="pip" data-i="2"></span>
+        <span class="pip" data-i="0"></span><span class="pip" data-i="1"></span><span class="pip" data-i="2"></span><span class="pip" data-i="3"></span>
       </span>
     </div>
   </div>
@@ -548,7 +549,7 @@
     }
     $("econNote").innerHTML = lines.join("<br>");
 
-    var MAX = 3;
+    var MAX = 4;   // Focus Points equal monk level
     var focus = (G.attune ? 1 : 0) + groups.length;
     var left = MAX - focus;
     document.querySelectorAll(".pip").forEach(function(p, i){
