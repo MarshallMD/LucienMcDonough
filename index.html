@@ -51,6 +51,7 @@
     font-family:"IBM Plex Mono",monospace;font-size:9px;font-weight:600;
     letter-spacing:.16em;text-transform:uppercase;color:var(--red);
     margin:0;padding:9px 12px;background:var(--panel-2);border-bottom:1px solid var(--line);
+    display:flex;align-items:baseline;justify-content:space-between;gap:8px;
   }
   .pad{padding:12px;}
 
@@ -96,9 +97,9 @@
   }
   .focus.drained .nm b{color:var(--dim);}
   .focus.over .nm b{color:var(--red-hi);}
-  .pips{display:flex;gap:7px;flex:none;}
+  .pips{display:flex;gap:5px;flex:none;}
   .pip{
-    width:19px;height:19px;border-radius:50%;flex:none;position:relative;
+    width:17px;height:17px;border-radius:50%;flex:none;position:relative;
     background:radial-gradient(circle at 34% 30%,
       #FFB0A4 0%, var(--red-hi) 34%, var(--red) 68%, #6B1E18 100%);
     box-shadow:0 0 7px rgba(232,72,59,.75),
@@ -115,7 +116,31 @@
     font-family:"IBM Plex Mono",monospace;font-size:14px;line-height:1;
   }
   .focus-tools button:active{border-color:var(--red);color:var(--red-hi);}
-  .focus-tools #shortRest{margin-left:auto;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;}
+  .focus-tools #shortRest{
+    margin-left:auto;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;
+  }
+  .focus-tools.belt{padding-top:0;}
+  .focus-tools.rests{padding-top:0;gap:7px;}
+  .focus-tools.rests button{flex:1;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;}
+  .fp-note i{font-style:normal;color:var(--dimmer);}
+  .focus-tools #uncannyUse, .focus-tools #beltUse{
+    flex:none;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;min-width:62px;
+  }
+  .focus-tools button.armed{border-color:var(--red);color:var(--red-hi);}
+  .focus-tools button:disabled{opacity:.35;cursor:not-allowed;border-color:var(--line-soft);}
+  .focus-tools.belt .fp-note{flex:1;}
+  .focus-tools input[type=number]{
+    flex:none;width:52px;padding:8px 4px;text-align:center;
+    background:var(--ink);color:var(--text);
+    border:1px solid var(--line);border-radius:5px;
+    font-family:"IBM Plex Mono",monospace;font-size:15px;font-weight:600;
+    -moz-appearance:textfield;
+  }
+  .focus-tools #beltUse, .focus-tools #dawn{
+    font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;
+  }
+  .focus-tools #beltUse:disabled{opacity:.35;cursor:not-allowed;border-color:var(--line-soft);}
+  .focus-tools #beltUse.armed{border-color:var(--red);color:var(--red-hi);}
   .fp-note{font-family:"IBM Plex Mono",monospace;font-size:9.5px;color:var(--dim);
            letter-spacing:.04em;line-height:1.3;}
   .pip.out{
@@ -130,6 +155,8 @@
     .pip:nth-child(3){animation-delay:-1.4s;}
     .pip:nth-child(4){animation-delay:-2.1s;}
     .pip:nth-child(5){animation-delay:-2.8s;}
+    .pip:nth-child(6){animation-delay:-3.5s;}
+    .pip:nth-child(7){animation-delay:-4.2s;}
     @keyframes ember{
       0%,100%{box-shadow:0 0 7px rgba(232,72,59,.7),0 0 17px rgba(232,72,59,.28),
                          inset 0 0 4px rgba(255,196,186,.5);}
@@ -233,6 +260,30 @@
   }
   .readout .math b{color:var(--text);font-weight:600;}
 
+  .card-ac{
+    display:flex;align-items:center;gap:9px;
+    padding:9px 0 4px;margin-bottom:0;
+    border-top:1px solid var(--line-soft);
+  }
+  .card-ac .k{
+    font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--dim);flex:none;
+  }
+  .card-ac .ac-val{
+    font-family:"IBM Plex Mono",monospace;font-size:19px;font-weight:600;
+    color:var(--text);min-width:28px;
+  }
+  .wheel-wrap.ac{margin-bottom:10px;}
+  .wheel-wrap.ac .tick{width:44px;height:38px;font-size:14px;}
+  .wheel-wrap.ac .tick.sel{font-size:19px;}
+  .wheel-wrap.ac .wheel-frame{width:44px;height:38px;}
+  .card-ac .verdict{
+    margin-left:auto;font-family:"IBM Plex Mono",monospace;font-size:11px;
+    font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  }
+  .card-ac .verdict.hit{color:#5FBF7A;}
+  .card-ac .verdict.miss{color:var(--dim);}
+  .card-ac .verdict.crit{color:var(--red-hi);}
   .wheel-wrap{position:relative;margin-bottom:4px;}
   .wheel{
     display:flex;overflow-x:auto;scroll-snap-type:x mandatory;
@@ -340,6 +391,37 @@
   }
   .dmg-bar .n.empty{color:var(--dim);}
 
+  .die-row{padding:7px 0 3px;border-bottom:1px solid var(--line-soft);}
+  .die-row:last-child{border-bottom:none;}
+  .die-row.muted{opacity:.32;}
+  .die-head{display:flex;align-items:baseline;gap:8px;margin-bottom:5px;}
+  .die-head .name{flex:1;font-size:13.5px;color:var(--mute);}
+  .die-head .name b{color:var(--text);font-weight:500;}
+  .die-head .name small{
+    display:block;font-family:"IBM Plex Mono",monospace;font-size:9.5px;
+    color:var(--dim);letter-spacing:.05em;
+  }
+  .die-strip{display:flex;gap:4px;align-items:center;margin-bottom:4px;}
+  .die-strip .striptag{
+    font-family:"IBM Plex Mono",monospace;font-size:8.5px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--red-hi);flex:none;width:26px;
+  }
+  .face{
+    flex:1;min-width:0;height:36px;
+    background:var(--ink);color:var(--mute);
+    border:1px solid var(--line);border-radius:4px;cursor:pointer;
+    font-family:"IBM Plex Mono",monospace;font-size:14px;
+  }
+  .face.one{color:var(--red-hi);}
+  .face.max{border-color:var(--line);}
+  .face.on{background:var(--red);border-color:var(--red);color:#fff;font-weight:600;}
+  .face.on.one{background:var(--red-hi);border-color:var(--red-hi);color:#fff;}
+  .face:disabled{opacity:.3;cursor:not-allowed;}
+  .die-strip.crit .face.on{background:var(--red-hi);border-color:var(--red-hi);}
+  .burst-note{
+    margin:4px 0 10px;padding:10px 11px;border-radius:5px;font-size:12.5px;line-height:1.45;
+    border:1px solid var(--red);background:var(--red-wash);
+  }
   .brk-box{margin-top:7px;}
   .brk{
     display:flex;align-items:baseline;gap:9px;
@@ -350,6 +432,29 @@
           min-width:74px;flex:none;}
   .brk .d{flex:1;font-size:11px;color:var(--dim);text-align:right;}
   .brk .v{font-size:17px;font-weight:600;color:var(--text);min-width:34px;text-align:right;}
+  .burst-tally{margin-top:8px;border-top:1px solid var(--line-soft);padding-top:6px;}
+  .tally-row{
+    display:flex;align-items:center;gap:9px;
+    min-height:44px;padding:3px 0;border-bottom:1px solid var(--line-soft);
+  }
+  .tally-row:last-child{border-bottom:none;}
+  .tally-row .tl{flex:1;font-size:14px;color:var(--mute);min-width:0;}
+  .tally-row .tl b{display:block;color:var(--text);font-weight:500;}
+  .tally-row .tl small{
+    display:block;font-family:"IBM Plex Mono",monospace;font-size:9.5px;
+    color:var(--dim);letter-spacing:.04em;
+  }
+  .tally-row .step{
+    flex:none;width:38px;height:36px;
+    background:var(--ink);color:var(--mute);
+    border:1px solid var(--line);border-radius:5px;cursor:pointer;
+    font-family:"IBM Plex Mono",monospace;font-size:15px;line-height:1;
+  }
+  .tally-row .step:active{border-color:var(--red);color:var(--red-hi);}
+  .tally-row .count{
+    flex:none;min-width:26px;text-align:center;
+    font-family:"IBM Plex Mono",monospace;font-size:17px;font-weight:600;
+  }
   .brk.force{border-color:var(--red-dim);}
   .brk.force .t, .brk.force .v{color:var(--red-hi);}
   .note{
@@ -372,6 +477,54 @@
   }
   #addAttack:active{background:var(--red-wash);}
 
+  .ro{
+    border-top:1px solid var(--line-soft);padding:9px 12px;
+  }
+  .ro-head{
+    display:flex;align-items:baseline;gap:8px;margin-bottom:4px;
+  }
+  .ro-head .n{
+    font-family:"IBM Plex Mono",monospace;font-size:9.5px;font-weight:600;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--red);flex:none;
+  }
+  .ro-head .t{font-size:11.5px;color:var(--dim);flex:1;min-width:0;}
+  .ro-head .v{
+    font-family:"IBM Plex Mono",monospace;font-size:9.5px;font-weight:600;
+    letter-spacing:.1em;text-transform:uppercase;flex:none;
+  }
+  .ro-head .v.hit{color:#5FBF7A;}
+  .ro-head .v.miss{color:var(--dim);}
+  .ro-head .v.crit{color:var(--red-hi);}
+  .ro-body{display:flex;align-items:flex-start;gap:10px;}
+  .ro-lines{flex:1;min-width:0;}
+  .ro-total{
+    flex:none;text-align:right;font-family:"Archivo",sans-serif;
+    font-weight:800;font-size:30px;line-height:1;letter-spacing:-.03em;
+    font-variant-numeric:tabular-nums;color:var(--text);min-width:46px;
+  }
+  .ro-total.none{color:var(--dimmer);font-size:20px;}
+  .ro-line{
+    display:flex;gap:8px;font-family:"IBM Plex Mono",monospace;font-size:10.5px;
+    line-height:1.55;color:var(--dim);
+  }
+  .ro-line .k{flex:none;width:44px;color:var(--dimmer);}
+  .ro-line .f{flex:1;min-width:0;word-break:break-word;}
+  .ro-line .f b{color:var(--text);font-weight:600;}
+  .ro-line.tgt .k{width:52px;white-space:nowrap;}
+  .ro-line.tgt .k{color:var(--dim);width:52px;white-space:nowrap;}
+  .ro-line.tgt .f em{color:var(--red-hi);font-style:normal;}
+  .ro-line .amt{
+    flex:none;min-width:34px;text-align:right;font-weight:600;color:var(--text);
+  }
+  .ro-line .amt.dim{color:var(--dim);}
+  .ro-line .f em{color:var(--red-hi);font-style:normal;}
+  .ro-sum{
+    padding:10px 12px;border-top:1px solid var(--line);background:var(--panel-2);
+    font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--dim);
+    line-height:1.5;
+  }
+  .ro-sum b{color:var(--text);font-weight:600;}
+  .ro-sum .big{color:var(--red-hi);font-size:14px;font-weight:600;}
   .bar{
     position:fixed;left:0;right:0;bottom:0;z-index:20;
     background:var(--panel-2);border-top:1px solid var(--red);
@@ -384,11 +537,28 @@
   }
   .bar .go:active{background:var(--red-hi);}
   .bar .go:disabled{background:none;border-color:var(--line);color:var(--dim);opacity:.55;}
+  .bar button.arm{
+    background:var(--red-hi);border-color:var(--red-hi);color:#fff;font-weight:600;
+  }
+  .bar #clearRolls{font-size:9.5px;}
   .bar .combat{
     margin-left:auto;font-family:"IBM Plex Mono",monospace;font-size:11px;
     letter-spacing:.08em;text-transform:uppercase;color:var(--mute);
   }
-  .bar .combat b{color:var(--red-hi);font-size:15px;font-weight:600;}
+  .bar .combat{display:flex;gap:14px;align-items:flex-end;}
+  .bar .st{display:flex;flex-direction:column;align-items:flex-end;line-height:1.1;}
+  .bar .st i{
+    font-style:normal;font-size:8.5px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--dim);
+  }
+  .bar .st b{color:var(--text);font-size:17px;font-weight:600;font-variant-numeric:tabular-nums;}
+  .bar .st.best b{color:var(--red-hi);}
+  .bar .st.fresh b{animation:pop .5s ease-out;}
+  @keyframes pop{
+    0%{transform:scale(1);}
+    35%{transform:scale(1.28);}
+    100%{transform:scale(1);}
+  }
   .bar .lab{
     font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.14em;
     text-transform:uppercase;color:var(--mute);line-height:1.3;
@@ -412,14 +582,89 @@
     h1{font-size:24px;}
     .readout .n{font-size:74px;}
   }
+
+  /* ---------- session gate ---------- */
+  .gate{
+    position:fixed;top:0;left:0;right:0;bottom:0;z-index:50;background:var(--ink);
+    display:flex;align-items:center;justify-content:center;
+    padding:24px calc(24px + env(safe-area-inset-left, 0px));
+  }
+  .gate[hidden]{display:none;}
+  .gate-card{max-width:340px;width:100%;text-align:center;}
+  .gate-card h1{
+    font-family:"Archivo",sans-serif;font-weight:800;font-size:30px;
+    letter-spacing:-.02em;margin:0 0 6px;text-transform:uppercase;color:var(--text);
+  }
+  .gate-card h1 span{color:var(--red);}
+  .gate-sub{
+    font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.08em;
+    color:var(--dim);margin:0 0 22px;line-height:1.5;
+  }
+  .gate-line{
+    font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--mute);
+    margin:0 0 22px;line-height:1.65;
+  }
+  .gate-go{
+    display:block;width:100%;min-height:52px;margin:0 0 10px;
+    background:var(--red);border:1px solid var(--red);border-radius:6px;color:#fff;
+    font-family:"IBM Plex Mono",monospace;font-size:11.5px;font-weight:600;
+    letter-spacing:.14em;text-transform:uppercase;cursor:pointer;
+  }
+  .gate-go:active{background:var(--red-hi);}
+  .gate-alt{
+    display:block;width:100%;min-height:46px;background:none;
+    border:1px solid var(--line);border-radius:6px;color:var(--mute);
+    font-family:"IBM Plex Mono",monospace;font-size:10.5px;
+    letter-spacing:.12em;text-transform:uppercase;cursor:pointer;
+  }
+  .gate-alt[hidden]{display:none;}
+
+  /* ---------- roll history ---------- */
+  h2 .h2-side{color:var(--dim);letter-spacing:.08em;font-weight:400;}
+  .hist-tools{display:flex;gap:7px;padding:11px 12px;}
+  .hist-tools button{
+    flex:1;min-height:40px;background:var(--ink);color:var(--mute);
+    border:1px solid var(--line);border-radius:5px;cursor:pointer;
+    font-family:"IBM Plex Mono",monospace;font-size:9.5px;
+    letter-spacing:.1em;text-transform:uppercase;
+  }
+  .hist-tools button:active{border-color:var(--red);color:var(--red-hi);}
+  .hist-tools button.arm{background:var(--red-hi);border-color:var(--red-hi);color:#fff;}
+  .ht{border-top:1px solid var(--line-soft);padding:9px 12px;}
+  .ht-head{
+    display:flex;align-items:baseline;gap:8px;margin-bottom:3px;
+    font-family:"IBM Plex Mono",monospace;font-size:9.5px;
+    letter-spacing:.1em;text-transform:uppercase;
+  }
+  .ht-head .n{color:var(--red);font-weight:600;flex:none;}
+  .ht-head .tm{color:var(--dimmer);flex:1;}
+  .ht-head .tot{color:var(--red-hi);font-size:15px;font-weight:600;flex:none;}
+  .ht-line{
+    font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--dim);line-height:1.55;
+  }
+  .ht-line b{color:var(--text);font-weight:600;}
+  .hist-empty{
+    padding:4px 12px 12px;font-family:"IBM Plex Mono",monospace;
+    font-size:10.5px;color:var(--dimmer);
+  }
 </style>
 </head>
 <body>
+<div class="gate" id="gate">
+  <div class="gate-card">
+    <h1>Bare <span>Hands</span></h1>
+    <p class="gate-sub">Lucien McDonough &middot; halfling monk 7 &middot; Warrior of the Elements</p>
+    <p class="gate-line" id="gateLine">No session on record.</p>
+    <button type="button" class="gate-go" id="gateNew">Start a new session</button>
+    <button type="button" class="gate-alt" id="gateResume">Resume</button>
+  </div>
+</div>
+
 <div class="wrap">
 
   <header>
     <h1>Bare <span>Hands</span></h1>
-    <div class="who">Lucien McDonough<br>Monk 5 · Elements</div>
+    <div class="who">Lucien McDonough<br>Monk 7 · Elements</div>
   </header>
 
   <!-- ============ ACTION ECONOMY ============ -->
@@ -432,16 +677,29 @@
     </div>
     <div class="econ-note" id="econNote"></div>
     <div class="focus" id="focusRow">
-      <span class="nm">Focus points<b id="focusCount">5 of 5 left</b></span>
+      <span class="nm">Focus points<b id="focusCount">7 of 7 left</b></span>
       <span class="pips">
-        <span class="pip" data-i="0"></span><span class="pip" data-i="1"></span><span class="pip" data-i="2"></span><span class="pip" data-i="3"></span><span class="pip" data-i="4"></span>
+        <span class="pip" data-i="0"></span><span class="pip" data-i="1"></span><span class="pip" data-i="2"></span><span class="pip" data-i="3"></span><span class="pip" data-i="4"></span><span class="pip" data-i="5"></span><span class="pip" data-i="6"></span>
       </span>
     </div>
     <div class="focus-tools">
       <button type="button" id="fpMinus" aria-label="Give back a focus point">&minus;</button>
       <button type="button" id="fpPlus" aria-label="Spend a focus point">+</button>
       <span class="fp-note" id="fpNote">banked 0 &middot; this turn 0</span>
+    </div>
+    <div class="focus-tools rests">
       <button type="button" id="shortRest">Short rest</button>
+      <button type="button" id="longRest">Long rest</button>
+    </div>
+    <div class="focus-tools belt">
+      <span class="fp-note">Uncanny Metabolism<br><i>all back &middot; 1/long rest &middot; on initiative</i></span>
+      <button type="button" id="uncannyUse">Use</button>
+    </div>
+    <div class="focus-tools belt">
+      <span class="fp-note">Dragonhide Belt<br><i>action &middot; 1/dawn</i></span>
+      <input type="number" id="beltRoll" min="1" max="12" placeholder="1d8" inputmode="numeric"
+             aria-label="Belt refill roll">
+      <button type="button" id="beltUse">Refill</button>
     </div>
   </div>
 
@@ -491,6 +749,23 @@
 
   <div id="attacks"></div>
   <button id="addAttack" type="button">+ Add attack roll</button>
+
+  <!-- ============ ROLL HISTORY ============ -->
+  <div class="block">
+    <h2>Roll history <span class="h2-side" id="histCount">0 turns</span></h2>
+    <div class="hist-tools">
+      <button type="button" id="histToggle">Show history</button>
+      <button type="button" id="sessionReset">Reset session</button>
+    </div>
+    <div id="hist" hidden></div>
+  </div>
+
+  <!-- ============ TURN READOUT ============ -->
+  <div class="block">
+    <h2>Turn readout</h2>
+    <div id="readout"></div>
+    <div class="ro-sum" id="roSum">nothing rolled yet</div>
+  </div>
 </div>
 
 <div class="bar">
@@ -500,8 +775,12 @@
   </div>
   <div class="bar-row two">
     <button type="button" class="go" id="commit">Commit turn</button>
+    <button type="button" id="clearRolls">Reset turn</button>
     <button type="button" id="reset">Discard</button>
-    <span class="combat" id="combatTotal">combat 0</span>
+    <span class="combat" id="turnStats">
+      <span class="st"><i>last</i><b id="lastTurn">&ndash;</b></span>
+      <span class="st best"><i>best</i><b id="bestTurn">&ndash;</b></span>
+    </span>
   </div>
 </div>
 
@@ -514,19 +793,51 @@
   var STRIKE_TYPES = [
     [UNSET, "Choose strike type\u2026"],
     ["Action — Attack", "Action — Attack (2 strikes)"],
+    ["Action — Thrown Dagger", "Action — Thrown Dagger (2 throws)"],
     ["Bonus Action — Unarmed Strike", "Bonus Action — Unarmed Strike"],
-    ["Flurry of Blows", "Flurry of Blows (2 strikes)"]
+    ["Flurry of Blows", "Flurry of Blows (2 strikes)"],
+    ["Magic Action — Elemental Burst", "Magic Action — Elemental Burst"]
   ];
-  // types that produce two strikes and therefore a linked partner card
-  var PAIRED = ["Action — Attack", "Flurry of Blows"];   // Extra Attack at level 5
-  var FOCUS_COST = { "Flurry of Blows": 1 };
+
+  var MARTIAL_DIE = 8;   // d8 from level 5 through 10
+
+  // kind drives which rolls, dice and modifiers a card offers
+  //   unarmed - tattoo applies, Tavern Brawler rerolls a 1, Maul force die
+  //   dagger  - monk weapon, Martial Arts die, but NO tattoo and no Tavern Brawler
+  //   burst   - no attack roll at all; three Martial Arts dice, no ability modifier
+  var CFG = {
+    "Action — Attack":                { paired:true,  kind:"unarmed", focus:0 },
+    "Action — Thrown Dagger":         { paired:true,  kind:"dagger",  focus:0 },
+    "Bonus Action — Unarmed Strike":  { paired:false, kind:"unarmed", focus:0 },
+    "Flurry of Blows":                { paired:true,  kind:"unarmed", focus:1 },
+    "Magic Action — Elemental Burst": { paired:false, kind:"burst",   focus:2 }
+  };
+  function cfg(t){ return CFG[t] || { paired:false, kind:"unarmed", focus:0 }; }
   var ATK_MODS = [["Dexterity",4],["Proficiency",3],["Eldritch Claw Tattoo",1]];
   var DMG_MODS = [["Dexterity",4],["Eldritch Claw Tattoo",1]];
-  var TYPES = ["acid","cold","fire","lightning","thunder"];
+  var TYPES = ["bludgeoning","force","acid","cold","fire","lightning","thunder"];
+  // force is always available (Empowered Strikes); the five elements need Attunement
+  var NEEDS_ATTUNE = ["acid","cold","fire","lightning","thunder"];
 
   var G = { attune:false, maul:false, maulAct:false, reaction:false };
   var bankedFocus = 0;    // spent in earlier turns this combat
-  var combatDamage = 0;   // committed damage this combat
+  var beltUsed = false;      // Dragonhide Belt refill, once per dawn
+  var uncannyUsed = false;   // Uncanny Metabolism, once per long rest
+  var history = [];          // committed turns this session
+  var sessionDay = null;     // YYYY-MM-DD; a session lives inside one day
+
+  function today(){
+    var d = new Date();
+    return d.getFullYear() + "-" +
+           ("0" + (d.getMonth() + 1)).slice(-2) + "-" +
+           ("0" + d.getDate()).slice(-2);
+  }
+  function clockNow(){
+    var d = new Date();
+    return ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2);
+  }
+  var lastTurn = null;    // damage of the most recently committed turn
+  var bestTurn = null;    // highest committed turn so far
   var host = $("attacks");
   var cards = [];
   var seq = 0;
@@ -572,18 +883,21 @@
 
   function paintEconomy(){
     var action = 0, bonusSingles = 0, groups = [];
-    var unset = 0, actionGroups = [], flurryGroups = [], stunned = 0;
+    var unset = 0, actionGroups = [], flurryGroups = [], burstGroups = [], stunned = 0;
     cards.forEach(function(c){
       var t = c.getType();
-      if(c.isStunning()) stunned++;   // costs a point whether or not the type is set yet
+      if(c.isStunning()) stunned++;
       if(!t) { unset++; return; }
-      if(t === "Action \u2014 Attack"){
+      var k = cfg(t);
+      if(t === "Magic Action \u2014 Elemental Burst"){
+        if(burstGroups.indexOf(c) === -1) burstGroups.push(c);   // a Magic action
+      } else if(t.indexOf("Action \u2014") === 0){
         if(actionGroups.indexOf(c.groupId) === -1) actionGroups.push(c.groupId);
       } else if(t === "Flurry of Blows"){
         if(flurryGroups.indexOf(c.groupId) === -1) flurryGroups.push(c.groupId);
       } else bonusSingles++;
     });
-    action = actionGroups.length;
+    action = actionGroups.length + burstGroups.length;
     groups = flurryGroups;
     var bonus = bonusSingles + groups.length + (G.maulAct ? 1 : 0);
 
@@ -602,6 +916,7 @@
     var lines = [];
     if(warn.length) lines.push(warn.join(" \u00b7 "));
     if(actionGroups.length) lines.push("Attack action: <b>two strikes</b> (Extra Attack), one action.");
+    if(burstGroups.length) lines.push("Elemental Burst: a <b>Magic action</b> and <b>2 focus</b>.");
     if(stunned) lines.push("Stunning Strike is <b>once per turn</b> \u2014 CON save DC 15.");
     if(groups.length) lines.push("Flurry of Blows: <b>two strikes</b>, one bonus action, one focus point.");
     if(G.maulAct) lines.push("Eldritch Maul is charging a bonus action this turn.");
@@ -612,8 +927,8 @@
     }
     $("econNote").innerHTML = lines.join("<br>");
 
-    var MAX = 5;   // Focus Points equal monk level
-    var pending = groups.length + stunned;
+    var MAX = 7;   // Focus Points equal monk level
+    var pending = groups.length + stunned + (burstGroups.length * 2);
     var focus = bankedFocus + pending;
     var left = MAX - focus;
     document.querySelectorAll(".pip").forEach(function(p, i){
@@ -625,7 +940,17 @@
     $("focusCount").textContent = left < 0
       ? Math.abs(left) + " over \u2014 you don't have it"
       : left + " of " + MAX + " left";
-    $("fpNote").innerHTML = "banked " + bankedFocus + " &middot; this turn " + pending;
+    $("fpNote").innerHTML = "banked " + bankedFocus + " &middot; this turn " + pending +
+      (beltUsed ? " &middot; belt spent" : "");
+    var bu = $("beltUse");
+    bu.disabled = beltUsed;
+    bu.className = beltUsed ? "" : "armed";
+    bu.textContent = beltUsed ? "Spent" : "Refill";
+
+    var uu = $("uncannyUse");
+    uu.disabled = uncannyUsed;
+    uu.className = uncannyUsed ? "" : "armed";
+    uu.textContent = uncannyUsed ? "Spent" : "Use";
   }
 
   function paintNow(){
@@ -646,7 +971,34 @@
     refreshAll();
   });
   $("shortRest").addEventListener("click", function(){
+    bankedFocus = 0;        // focus only - the belt and Uncanny stay spent
+    refreshAll();
+  });
+
+  $("longRest").addEventListener("click", function(){
     bankedFocus = 0;
+    uncannyUsed = false;    // Uncanny recharges on a long rest
+    beltUsed = false;       // a long rest carries you through dawn
+    lastTurn = null;
+    bestTurn = null;
+    refreshAll();
+  });
+
+  $("uncannyUse").addEventListener("click", function(){
+    if(uncannyUsed) return;
+    bankedFocus = 0;        // all points back
+    uncannyUsed = true;
+    refreshAll();
+  });
+
+  $("beltUse").addEventListener("click", function(){
+    if(beltUsed) return;
+    var v = parseInt($("beltRoll").value, 10);
+    if(isNaN(v) || v < 1) return;          // needs the die you actually rolled
+    bankedFocus -= v;
+    if(bankedFocus < 0) bankedFocus = 0;
+    beltUsed = true;
+    $("beltRoll").value = "";
     refreshAll();
   });
 
@@ -684,6 +1036,7 @@
   function makeCard(after){
     var state = { face:null };
     var lastForce = 0;
+    var effType = "bludgeoning";
     seq++;
 
     var card = el("div","block");
@@ -725,6 +1078,29 @@
     readout.appendChild(math);
     pad.appendChild(readout);
 
+    var acRow = el("div","card-ac");
+    var acLbl = el("span","k","Target AC");
+    var acShow = el("span","ac-val","\u2013");
+    var acVerdict = el("span","verdict");
+    acRow.appendChild(acLbl); acRow.appendChild(acShow); acRow.appendChild(acVerdict);
+    pad.appendChild(acRow);
+
+    var acWrap = el("div","wheel-wrap ac");
+    var acWheel = el("div","wheel");
+    acWheel.setAttribute("role","listbox");
+    acWheel.setAttribute("aria-label","Target armor class");
+    for(var av = 5; av <= 30; av++){
+      var at = el("button","tick", String(av));
+      at.type = "button"; at.dataset.v = av; at.setAttribute("role","option");
+      acWheel.appendChild(at);
+    }
+    acWrap.appendChild(acWheel);
+    var acFrame = el("div","wheel-frame");
+    acWrap.appendChild(acFrame);
+    acWrap.appendChild(el("div","fade l"));
+    acWrap.appendChild(el("div","fade r"));
+    pad.appendChild(acWrap);
+
     var ww = el("div","wheel-wrap");
     var wheel = el("div","wheel");
     wheel.setAttribute("role","listbox");
@@ -740,7 +1116,15 @@
     ww.appendChild(el("div","fade l"));
     ww.appendChild(el("div","fade r"));
     pad.appendChild(ww);
-    pad.appendChild(el("div","wheel-cap","swipe to the number you rolled"));
+    var faceCap = el("div","wheel-cap","swipe to the number you rolled");
+    pad.appendChild(faceCap);
+
+    var burstNote = el("div","burst-note");
+    burstNote.innerHTML = '<b>No attack roll.</b> Every creature in a 20 ft sphere makes a ' +
+      '<b>Dexterity save vs DC 15</b>, taking three Martial Arts dice on a failure and half ' +
+      'as much on a success. Costs a Magic action and 2 Focus Points.';
+    burstNote.style.display = "none";
+    pad.appendChild(burstNote);
 
     var attackNote = el("div");
     pad.appendChild(attackNote);
@@ -773,49 +1157,110 @@
     pad.appendChild(diceBox);
 
     var dieRows = [];
-    function dieRow(label, sub, isForce, removable){
-      var row = el("div","row");
-      var nm = el("span","name","<b>" + label + "</b>" + (sub ? "<small>" + sub + "</small>" : ""));
-      var pair = el("span","pair");
+    function dieRow(label, sub, isForce, removable, size){
+      var faces = size || MARTIAL_DIE;
+      var row = el("div","die-row");
+      var head = el("div","die-head");
+      head.innerHTML = '<span class="name"><b>' + label + '</b>' +
+                       (sub ? '<small>' + sub + '</small>' : '') + '</span>';
+      row.appendChild(head);
 
-      var inp = el("input"); inp.type = "number"; inp.min = "1";
-      inp.className = "die"; inp.placeholder = "\u2013"; inp.inputMode = "numeric";
-      inp.setAttribute("aria-label", label);
-      inp.addEventListener("input", refreshAll);
-
-      var plus = el("span","x","+");
-      var crit = el("input"); crit.type = "number"; crit.min = "1";
-      crit.className = "die crit"; crit.placeholder = "crit"; crit.inputMode = "numeric";
-      crit.setAttribute("aria-label", label + " \u2014 critical die");
-      crit.addEventListener("input", refreshAll);
-
-      if(isForce){ inp.dataset.force = "1"; crit.dataset.force = "1"; }
-      crit.dataset.crit = "1";
-
-      pair.appendChild(inp); pair.appendChild(plus); pair.appendChild(crit);
-      row.appendChild(nm); row.appendChild(pair);
-
-      var entry = { row:row, main:inp, crit:crit, isForce:!!isForce };
-      dieRows.push(entry);
+      var entry = { row:row, isForce:!!isForce, faces:faces, main:null, crit:null };
 
       if(removable){
-        var x = el("button","drop","\u00d7"); x.type = "button";
+        var x = el("button","drop","\u00d7");
+        x.type = "button";
         x.setAttribute("aria-label","Remove this damage roll");
         x.addEventListener("click", function(){
           dieRows = dieRows.filter(function(e){ return e !== entry; });
           row.remove(); refreshAll();
         });
-        row.appendChild(x);
+        head.appendChild(x);
       }
+
+      // one strip of tappable faces; a second appears on a critical
+      function strip(isCrit){
+        var s = el("div","die-strip" + (isCrit ? " crit" : ""));
+        var store = { value:null, node:s, buttons:[] };
+        if(isCrit){
+          var tag = el("span","striptag","crit");
+          s.appendChild(tag);
+        }
+        for(var i = 1; i <= faces; i++){
+          (function(v){
+            var b = el("button","face", String(v));
+            b.type = "button";
+            b.setAttribute("aria-label", label + " " + (isCrit ? "critical " : "") + "rolled " + v);
+            b.addEventListener("click", function(){
+              store.value = (store.value === v) ? null : v;
+              refreshAll();
+            });
+            store.buttons.push(b);
+            s.appendChild(b);
+          })(i);
+        }
+        store.paint = function(disabled){
+          store.buttons.forEach(function(b, idx){
+            var v = idx + 1;
+            b.className = "face" +
+              (store.value === v ? " on" : "") +
+              (v === 1 && !isForce ? " one" : "") +
+              (v === faces ? " max" : "");
+            b.disabled = !!disabled;
+          });
+          s.style.display = "";
+        };
+        return store;
+      }
+
+      entry.main = strip(false);
+      entry.crit = strip(true);
+      row.appendChild(entry.main.node);
+      row.appendChild(entry.crit.node);
+
+      dieRows.push(entry);
       return row;
     }
-    diceBox.appendChild(dieRow("Martial Arts die","d8 \u00b7 reroll a 1", false, false));
-    diceBox.appendChild(dieRow("Eldritch Maul","d6 force \u00b7 no reroll", true, false));
+
+    diceBox.appendChild(dieRow("Martial Arts die","d8 \u00b7 Tavern Brawler rerolls a 1", false, false, 8));
+    diceBox.appendChild(dieRow("Eldritch Maul","d6 force \u00b7 no reroll", true, false, 6));
+
+    // Elemental Burst rolls three Martial Arts dice, shared across every target
+    var burstRows = [];
+    for(var bi = 1; bi <= 3; bi++){
+      var br = dieRow("Burst die " + bi, "d8", false, false, 8);
+      br.dataset.burst = "1";
+      br.style.display = "none";
+      diceBox.appendChild(br);
+      burstRows.push(dieRows[dieRows.length - 1]);
+      burstRows[burstRows.length - 1].isBurstDie = true;
+    }
+
+    // how many creatures failed the save and how many made it
+    var tally = el("div","burst-tally");
+    tally.style.display = "none";
+    function counter(label, note){
+      var row = el("div","tally-row");
+      row.innerHTML = '<span class="tl"><b>' + label + '</b><small>' + note + '</small></span>';
+      var minus = el("button","step","\u2212"); minus.type = "button";
+      var val = el("span","count","0");
+      var plus = el("button","step","+"); plus.type = "button";
+      row.appendChild(minus); row.appendChild(val); row.appendChild(plus);
+      var n = 0;
+      minus.addEventListener("click", function(){ if(n > 0){ n--; val.textContent = n; refreshAll(); } });
+      plus.addEventListener("click", function(){ if(n < 20){ n++; val.textContent = n; refreshAll(); } });
+      tally.appendChild(row);
+      return { get: function(){ return n; },
+               reset: function(){ n = 0; val.textContent = "0"; } };
+    }
+    var failedCt = counter("Failed the save", "full damage each");
+    var savedCt  = counter("Saved", "half, rounded down");
+    diceBox.appendChild(tally);
 
     var addDie = el("button","add","+ Add another roll");
     addDie.type = "button";
     addDie.addEventListener("click", function(){
-      diceBox.appendChild(dieRow("Extra die","", false, true)); refreshAll();
+      diceBox.appendChild(dieRow("Extra die","d8", false, true, 8)); refreshAll();
     });
     pad.appendChild(addDie);
 
@@ -842,7 +1287,7 @@
     TYPES.forEach(function(t){
       var o = el("option"); o.value = t; o.textContent = t; typeSel.appendChild(o);
     });
-    typeSel.value = "thunder";
+    typeSel.value = "force";
     typeSel.setAttribute("aria-label","Damage type");
     typeSel.addEventListener("change", refreshAll);
     typeRow.appendChild(typeSel);
@@ -855,6 +1300,66 @@
     pad.appendChild(dmgBar);
     var breakdown = el("div","brk-box");
     pad.appendChild(breakdown);
+
+    /* ---- target AC wheel ---- */
+    var acVal = null, acLock = false, acTimer = null;
+    var AW = 44;
+    function acPad(){
+      var w = acWheel.clientWidth;
+      if(!w) return;
+      var side = Math.max(0, (w - AW) / 2);
+      acWheel.style.paddingLeft = side + "px";
+      acWheel.style.paddingRight = side + "px";
+      acCenter(acVal === null ? 15 : acVal, "auto");
+    }
+    function acCenter(v, behavior){
+      var t = acWheel.querySelector('.tick[data-v="' + v + '"]');
+      if(!t) return;
+      acLock = true;
+      var left = t.offsetLeft - acWheel.clientWidth / 2 + AW / 2;
+      if(acWheel.scrollTo) acWheel.scrollTo({ left:left, behavior:behavior || "smooth" });
+      else acWheel.scrollLeft = left;
+      setTimeout(function(){ acLock = false; }, 260);
+    }
+    function acNearest(){
+      var mid = acWheel.scrollLeft + acWheel.clientWidth / 2, best = null, bd = Infinity;
+      Array.prototype.forEach.call(acWheel.children, function(t){
+        var dd = Math.abs(t.offsetLeft + AW / 2 - mid);
+        if(dd < bd){ bd = dd; best = t; }
+      });
+      return best;
+    }
+    function acPaint(){
+      Array.prototype.forEach.call(acWheel.children, function(t){
+        var v = parseInt(t.dataset.v, 10);
+        t.className = "tick" + (v === acVal ? " sel" : "") +
+          (acVal !== null && Math.abs(v - acVal) === 1 ? " near" : "");
+        t.setAttribute("aria-selected", v === acVal ? "true" : "false");
+      });
+      acFrame.className = "wheel-frame" + (acVal === null ? "" : " live");
+      acShow.textContent = (acVal === null) ? "\u2013" : acVal;
+    }
+    function acPick(v){
+      acVal = v; acPaint();
+      cards.forEach(function(o){ if(o !== card) o.setAC(v); });
+      refreshAll();
+    }
+    acWheel.addEventListener("scroll", function(){
+      if(acLock) return;
+      clearTimeout(acTimer);
+      acTimer = setTimeout(function(){
+        var t = acNearest();
+        if(!t) return;
+        var v = parseInt(t.dataset.v, 10);
+        if(v !== acVal) acPick(v);
+      }, 90);
+    }, { passive:true });
+    acWheel.addEventListener("click", function(e){
+      var t = e.target.closest(".tick");
+      if(!t) return;
+      acCenter(parseInt(t.dataset.v, 10));
+      acPick(parseInt(t.dataset.v, 10));
+    });
 
     /* ---- carousel ---- */
     var lockScroll = false, scrollTimer;
@@ -915,55 +1420,131 @@
     card.recalc = function(){
       var f = state.face;
       var isCrit = (f === 20);
+      var k = cfg(sel.value).kind;
+      var isBurst = (k === "burst");
+      var isDagger = (k === "dagger");
 
-      // crit boxes open and close with the natural 20
       card.classList.toggle("is-crit", isCrit);
+      card.classList.toggle("is-burst", isBurst);
 
-      dieRows.forEach(function(e){
-        var blocked = e.isForce && !G.maul;
-        e.row.className = "row" + (blocked ? " muted" : "");
-        e.main.disabled = blocked;
-        e.crit.disabled = blocked || !isCrit;
-        if(!isCrit && e.crit.value !== "") e.crit.value = "";
+      // Elemental Burst forces a save instead of rolling to hit
+      acRow.style.display = isBurst ? "none" : "";
+      acWrap.style.display = isBurst ? "none" : "";
+      readout.style.display = isBurst ? "none" : "";
+      faceCap.style.display = isBurst ? "none" : "";
+      ww.style.display = isBurst ? "none" : "";
+      burstNote.style.display = isBurst ? "" : "none";
+
+      // the tattoo is unarmed-only, so it switches off for daggers and the burst
+      [atkBox, dmgBox].forEach(function(box){
+        Array.prototype.forEach.call(box.children, function(row){
+          var nm = row.querySelector(".name");
+          if(!nm) return;
+          var isTattoo = nm.textContent.indexOf("Tattoo") !== -1;
+          var off = (isTattoo && k !== "unarmed") || isBurst;
+          row.className = "row" + (off ? " muted" : "");
+          var cb = row.querySelector("input[type=checkbox]");
+          if(cb) cb.disabled = off;
+        });
       });
 
-      // Attunement gates the damage type
-      typeSel.disabled = !G.attune;
+      tally.style.display = isBurst ? "" : "none";
+      addDie.style.display = isBurst ? "none" : "";
+      if(!isBurst){ failedCt.reset(); savedCt.reset(); }
+
+      dieRows.forEach(function(e, i){
+        // burst dice only appear for a burst; the ordinary dice only appear otherwise
+        if(e.isBurstDie){
+          e.row.style.display = isBurst ? "" : "none";
+          e.row.className = "die-row";
+          e.main.paint(!isBurst);
+          e.crit.node.style.display = "none";
+          if(!isBurst){ e.main.value = null; e.crit.value = null; }
+          return;
+        }
+        e.row.style.display = isBurst ? "none" : "";
+        if(isBurst){
+          e.main.value = null; e.crit.value = null;
+          e.row.className = "die-row muted";
+          return;
+        }
+        var blocked = (e.isForce && (!G.maul || k !== "unarmed"));
+        e.row.className = "die-row" + (blocked ? " muted" : "");
+        if(blocked){ e.main.value = null; e.crit.value = null; }
+        e.main.paint(blocked);
+        e.crit.paint(blocked || !isCrit);
+        e.crit.node.style.display = (isCrit && !blocked) ? "" : "none";
+        if(!isCrit) e.crit.value = null;
+      });
+
+      typeSel.disabled = false;
+      var wanted = typeSel.value;
+      var blockedType = !G.attune && NEEDS_ATTUNE.indexOf(wanted) !== -1;
+      effType = isDagger ? "piercing" : (blockedType ? "bludgeoning" : wanted);
+      if(isDagger) effType = G.attune && !blockedType ? wanted : "piercing";
+      // Elemental Burst picks its own element and is not gated on Attunement,
+      // but it has no force option
+      if(isBurst) effType = (NEEDS_ATTUNE.indexOf(wanted) !== -1) ? wanted : "thunder";
       typeName.innerHTML = "<b>Damage type</b><small>" +
-        (G.attune ? "attuned \u2014 pick per strike" : "bludgeoning until attuned") + "</small>";
+        (isBurst ? (NEEDS_ATTUNE.indexOf(typeSel.value) === -1
+                      ? "no force on a burst \u2014 using thunder"
+                      : "pick the element")
+         : isDagger ? "thrown dagger \u2014 piercing unless attuned"
+         : G.attune ? "attuned \u2014 any of the seven"
+         : (blockedType ? wanted + " needs Attunement \u2014 using bludgeoning"
+                        : "force or bludgeoning without Attunement")) + "</small>";
 
       var am = sumMods(atkBox);
-      if(f === null){
+      if(isBurst){
+        bigN.textContent = "\u2013"; bigN.className = "n empty";
+        math.innerHTML = "";
+        acVerdict.className = "verdict"; acVerdict.textContent = "";
+        attackNote.innerHTML = "";
+      } else if(f === null){
         bigN.textContent = "\u2013"; bigN.className = "n empty";
         math.innerHTML = am.parts.length ? "ready: " + am.parts.join(" \u00b7 ")
                                          : "Pick the d20 face you rolled";
         readout.className = "readout";
+        acVerdict.className = "verdict"; acVerdict.textContent = "";
         attackNote.innerHTML = "";
       } else {
         bigN.textContent = f + am.total; bigN.className = "n";
         math.innerHTML = "<b>" + f + "</b> rolled" +
           (am.parts.length ? " \u00b7 " + am.parts.join(" \u00b7 ") : "");
         readout.className = "readout" + (f === 20 ? " crit" : f === 1 ? " fumble" : "");
+        var ac = card.getAC();
+        if(f === 20){ acVerdict.className = "verdict crit"; acVerdict.textContent = "critical"; }
+        else if(f === 1){ acVerdict.className = "verdict miss"; acVerdict.textContent = "miss"; }
+        else if(ac !== null){
+          var hit = (f + am.total) >= ac;
+          acVerdict.className = "verdict " + (hit ? "hit" : "miss");
+          acVerdict.textContent = hit ? "hit" : "miss";
+        } else { acVerdict.className = "verdict"; acVerdict.textContent = ""; }
+
         attackNote.innerHTML =
           f === 1 ? '<div class="note"><span class="tag">Luck</span><span>Natural 1. ' +
                     '<b>Reroll the d20</b> and swipe to the new face. Halfling Luck makes you ' +
                     'keep the second roll.</span></div>'
         : f === 20 ? '<div class="note"><span class="tag">Crit</span><span>Natural 20. ' +
-                    '<b>Crit boxes are open below</b> \u2014 roll every damage die a second ' +
-                    'time and enter it. Flat modifiers are not doubled.</span></div>'
+                    '<b>Crit rows are open below</b> \u2014 roll every damage die a second ' +
+                    'time and tap it. Flat modifiers are not doubled.</span></div>'
         : "";
       }
 
-      var dm = sumMods(dmgBox), any = false, hasOne = false;
+      var dm = isBurst ? { total:0, parts:[] } : sumMods(dmgBox);
+      var any = false, hasOne = false;
       var mainSum = 0, forceSum = 0, mainFaces = [], forceFaces = [];
       dieRows.forEach(function(e){
-        [e.main, e.crit].forEach(function(inp){
-          if(inp.disabled) return;
-          var v = parseInt(inp.value, 10);
-          if(isNaN(v)) return;
+        [e.main, e.crit].forEach(function(st){
+          if(st.value === null) return;
+          if(e.row.className.indexOf("muted") !== -1) return;
+          if(st === e.crit && !isCrit) return;
           any = true;
-          if(e.isForce){ forceSum += v; forceFaces.push(String(v)); }
-          else { mainSum += v; mainFaces.push(String(v)); if(v === 1) hasOne = true; }
+          if(e.isForce){ forceSum += st.value; forceFaces.push(String(st.value)); }
+          else {
+            mainSum += st.value; mainFaces.push(String(st.value));
+            if(st.value === 1 && k === "unarmed") hasOne = true;
+          }
         });
       });
 
@@ -971,7 +1552,18 @@
       var primary = mainSum + dm.total;
       if(primary < 0) primary = 0;
       var total = primary + forceSum;
-      var typeName2 = G.attune ? typeSel.value : "bludgeoning";
+      var typeName2 = effType;
+
+      // a burst deals its roll in full to everything that failed, half to everything that saved
+      var burstFull = 0, burstHalf = 0, nFail = 0, nSave = 0;
+      if(isBurst){
+        burstFull = mainSum;
+        burstHalf = Math.floor(mainSum / 2);
+        nFail = failedCt.get();
+        nSave = savedCt.get();
+        total = burstFull * nFail + burstHalf * nSave;
+        any = any && (nFail + nSave > 0);
+      }
 
       if(!any){
         dmgN.textContent = "\u2013"; dmgN.className = "n empty";
@@ -979,27 +1571,52 @@
         breakdown.innerHTML = "";
       } else {
         dmgN.textContent = total; dmgN.className = "n";
-        dmgLab.innerHTML = "Damage" + (isCrit ? " <span style='color:var(--red-hi)'>crit</span>" : "");
+        dmgLab.innerHTML = "Damage" + (isCrit && !isBurst ? " <span style='color:var(--red-hi)'>crit</span>" : "");
         var rows = "";
-        if(mainFaces.length || dm.total){
+        if(isBurst){
           rows += '<div class="brk"><span class="t">' + typeName2 + '</span>' +
                   '<span class="d">' + (mainFaces.join(" + ") || "0") +
-                  (dm.total ? (dm.total > 0 ? " + " : " \u2212 ") + Math.abs(dm.total) : "") +
-                  '</span><span class="v">' + primary + '</span></div>';
-        }
-        if(forceFaces.length){
-          rows += '<div class="brk force"><span class="t">force</span>' +
-                  '<span class="d">' + forceFaces.join(" + ") +
-                  '</span><span class="v">' + forceSum + '</span></div>';
+                  ' = <b>' + burstFull + '</b> full, ' + burstHalf + ' on a save</span>' +
+                  '<span class="v">&nbsp;</span></div>';
+          if(nFail){
+            rows += '<div class="brk"><span class="t">failed &times;' + nFail + '</span>' +
+                    '<span class="d">' + nFail + ' &times; ' + burstFull + '</span>' +
+                    '<span class="v">' + (burstFull * nFail) + '</span></div>';
+          }
+          if(nSave){
+            rows += '<div class="brk"><span class="t">saved &times;' + nSave + '</span>' +
+                    '<span class="d">' + nSave + ' &times; ' + burstHalf + '</span>' +
+                    '<span class="v">' + (burstHalf * nSave) + '</span></div>';
+          }
+        } else {
         }
         breakdown.innerHTML = rows;
       }
 
       dmgNote.innerHTML = hasOne
-        ? '<div class="note soft"><span class="tag">Brawler</span><span>A damage die shows ' +
-          '<b>1</b>. Tavern Brawler lets you reroll it \u2014 type the new face over it. ' +
-          'Applies to crit dice too. Unarmed dice only, not the force die.</span></div>'
+        ? '<div class="note soft"><span class="tag">Brawler</span><span>An unarmed damage die ' +
+          'shows <b>1</b>. Tavern Brawler lets you reroll it \u2014 tap the new face. ' +
+          'Unarmed only: not the force die, not a thrown dagger.</span></div>'
         : "";
+
+      card.readout = {
+        type: sel.value,
+        kind: k,
+        face: isBurst ? null : f,
+        crit: isCrit,
+        fumble: (f === 1),
+        atkParts: am.parts.slice(),
+        atkTotal: (isBurst || f === null) ? null : f + am.total,
+        mainFaces: mainFaces.slice(),
+        forceFaces: forceFaces.slice(),
+        dmgParts: dm.parts.slice(),
+        dmgTotal: dm.total,
+        dmgType: effType,
+        stun: stunCb.checked,
+        ac: isBurst ? null : card.getAC(),
+        burst: isBurst ? { full: burstFull, half: burstHalf,
+                           failed: nFail, saved: nSave } : null
+      };
     };
 
     card.getDamage = function(){
@@ -1010,8 +1627,19 @@
       var v = parseInt(dmgN.textContent, 10);
       if(isNaN(v)) return null;
       var pr = v - lastForce;
-      return { type: G.attune ? typeSel.value : "bludgeoning",
-               primary: pr < 0 ? 0 : pr, force: lastForce };
+      return { type: effType, primary: pr < 0 ? 0 : pr, force: lastForce };
+    };
+    card.clearRolls = function(){
+      state.face = null;
+      paintTicks();
+      centerOn(10, "auto");
+      dieRows.forEach(function(e){ e.main.value = null; e.crit.value = null; });
+      stunCb.checked = false;
+    };
+    card.getAC = function(){ return acVal; };
+    card.setAC = function(v){
+      if(v === null || acVal !== null) return;
+      acVal = v; acCenter(v, "auto"); acPaint();
     };
     card.getType = function(){ return sel.value; };
     card.setType = function(v){ sel.value = v; sel.className = v ? "" : "unset"; };
@@ -1044,6 +1672,7 @@
       renumber(); refreshAll();
     });
 
+    if(cards.length) card.setAC(cards[0].getAC());
     if(after && after.parentNode === host){
       host.insertBefore(card, after.nextSibling);
       cards.splice(cards.indexOf(after) + 1, 0, card);
@@ -1051,8 +1680,8 @@
       host.appendChild(card);
       cards.push(card);
     }
-    padWheel();
-    window.addEventListener("resize", padWheel);
+    padWheel(); acPad(); acPaint();
+    window.addEventListener("resize", function(){ padWheel(); acPad(); });
     paintTicks();
     return card;
   }
@@ -1068,7 +1697,7 @@
     return null;
   }
 
-  function isPaired(t){ return PAIRED.indexOf(t) !== -1; }
+  function isPaired(t){ return cfg(t).paired; }
 
   function onTypeChange(card){
     var t = card.getType();
@@ -1123,53 +1752,344 @@
     return { byType: byType, total: total, count: n };
   }
 
+  function esc(t){
+    return String(t).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+  }
+
+  function renderReadout(){
+    var html = "", hits = 0, misses = 0, rolled = 0;
+    var byType = {}, grand = 0;
+
+    cards.forEach(function(c, i){
+      var r = c.readout;
+      if(!r) return;
+      var hasDice = r.mainFaces.length || r.forceFaces.length;
+      if(r.face === null && !hasDice) return;
+      rolled++;
+
+      var ac = r.ac;
+      var verdict = "", vcls = "";
+      if(r.face !== null){
+        if(r.crit){ verdict = "critical"; vcls = "crit"; hits++; }
+        else if(r.fumble){ verdict = "natural 1"; vcls = "miss"; misses++; }
+        else if(ac !== null){
+          if(r.atkTotal >= ac){ verdict = "hit"; vcls = "hit"; hits++; }
+          else { verdict = "miss"; vcls = "miss"; misses++; }
+        }
+      }
+
+      var atk = "&ndash;";
+      if(r.face !== null){
+        atk = "<b>" + r.face + "</b> rolled";
+        r.atkParts.forEach(function(p){ atk += " + " + esc(p.replace(/^(.*?) \+/, "$1 ")); });
+        atk += " = <b>" + r.atkTotal + "</b>";
+        atk += (ac !== null) ? " <em>vs AC " + ac + "</em>"
+                             : " <span style='color:var(--dimmer)'>no AC set</span>";
+      }
+
+      var dmg = "", total = null, targetLines = "";
+      var b = r.burst;
+
+      if(b && (b.failed + b.saved > 0)){
+        // a burst is resolved once and then applied to each creature separately
+        dmg = (r.mainFaces.join(" + ") || "0") + " = <b>" + b.full + "</b> " + r.dmgType +
+              " &middot; <span style='color:var(--dimmer)'>" + b.half + " on a save</span>";
+        total = b.full * b.failed + b.half * b.saved;
+
+        var tn = 0;
+        for(var q = 0; q < b.failed; q++){
+          tn++;
+          targetLines += '<div class="ro-line tgt"><span class="k">target ' + tn + '</span>' +
+            '<span class="f"><em>failed</em> the save</span>' +
+            '<span class="amt">' + b.full + '</span></div>';
+        }
+        for(var q2 = 0; q2 < b.saved; q2++){
+          tn++;
+          targetLines += '<div class="ro-line tgt"><span class="k">target ' + tn + '</span>' +
+            '<span class="f">saved \u2014 half</span>' +
+            '<span class="amt dim">' + b.half + '</span></div>';
+        }
+
+        grand += total;
+        byType[r.dmgType] = (byType[r.dmgType] || 0) + total;
+
+      } else if(hasDice && !b){
+        var mainSum = r.mainFaces.reduce(function(a,b2){ return a + parseInt(b2,10); }, 0);
+        var forceSum = r.forceFaces.reduce(function(a,b2){ return a + parseInt(b2,10); }, 0);
+        var primary = Math.max(0, mainSum + r.dmgTotal);
+        var bits = [];
+        if(r.mainFaces.length || r.dmgTotal){
+          bits.push((r.mainFaces.join(" + ") || "0") +
+            (r.dmgTotal ? " + " + r.dmgTotal : "") +
+            " = <b>" + primary + "</b> " + r.dmgType);
+        }
+        if(r.forceFaces.length){
+          bits.push(r.forceFaces.join(" + ") + " = <em>" + forceSum + " force</em>");
+        }
+        dmg = bits.join(" &middot; ");
+        total = primary + forceSum;
+        grand += total;
+        if(primary) byType[r.dmgType] = (byType[r.dmgType] || 0) + primary;
+        if(forceSum) byType.force = (byType.force || 0) + forceSum;
+
+      } else if(b){
+        dmg = (r.mainFaces.length ? (r.mainFaces.join(" + ") + " rolled &mdash; ") : "") +
+              "<span style='color:var(--dimmer)'>no targets recorded yet</span>";
+      }
+
+      html += '<div class="ro">' +
+        '<div class="ro-head">' +
+          '<span class="n">Strike ' + (i + 1) + '</span>' +
+          '<span class="t">' + (r.type ? esc(r.type) : "no type set") +
+            (r.stun ? " &middot; stunning strike" : "") + '</span>' +
+          (verdict ? '<span class="v ' + vcls + '">' + verdict + '</span>' : '') +
+        '</div>' +
+        '<div class="ro-body">' +
+          '<div class="ro-lines">' +
+            (b ? '' : '<div class="ro-line"><span class="k">to hit</span><span class="f">' + atk + '</span></div>') +
+            (dmg ? '<div class="ro-line"><span class="k">' + (b ? "burst" : "damage") +
+                   '</span><span class="f">' + dmg + '</span></div>' : '') +
+            targetLines +
+          '</div>' +
+          '<div class="ro-total' + (total === null ? ' none' : '') + '">' +
+            (total === null ? "&ndash;" : total) + '</div>' +
+        '</div>' +
+      '</div>';
+    });
+
+    $("readout").innerHTML = html;
+
+    if(!rolled){
+      $("roSum").innerHTML = "nothing rolled yet";
+      return;
+    }
+    var parts = Object.keys(byType).map(function(k){ return "<b>" + byType[k] + "</b> " + k; });
+    var verdictLine = (hits + misses === 0)
+      ? rolled + " strike" + (rolled === 1 ? "" : "s") + " entered"
+      : "<b>" + hits + "</b> hit &middot; <b>" + misses + "</b> missed";
+    $("roSum").innerHTML = verdictLine +
+      (parts.length ? "<br>" + parts.join(" &middot; ") : "") +
+      '<br><span class="big">' + grand + '</span> total this turn';
+  }
+
+  function renderHistory(){
+    $("histCount").textContent = history.length +
+      (history.length === 1 ? " turn" : " turns");
+    if(!history.length){
+      $("hist").innerHTML = '<div class="hist-empty">No turns committed yet this session.</div>';
+      return;
+    }
+    var html = "";
+    history.forEach(function(e, i){
+      var lines = e.strikes.map(function(st){
+        var verdict = st.crit ? "crit" : st.fumble ? "nat 1"
+          : (st.ac !== null && st.atk !== null)
+            ? (st.atk >= st.ac ? "hit" : "miss") : "";
+        var roll = (st.face === null) ? "save"
+          : st.face + " \u2192 <b>" + st.atk + "</b>" +
+            (st.ac !== null ? " vs " + st.ac : "");
+        var dm = st.faces.concat(st.force.map(function(f){ return f + "f"; })).join("+");
+        return "&middot; " + esc(st.type.replace(/ \u2014 /, " ")) +
+               " &nbsp;" + roll + (verdict ? " <b>" + verdict + "</b>" : "") +
+               (dm ? " &nbsp;dmg " + dm : "") +
+               (st.stun ? " &nbsp;<b>stun</b>" : "");
+      }).join("<br>");
+      var types = Object.keys(e.byType).map(function(k){
+        return e.byType[k] + " " + k;
+      }).join(" \u00b7 ");
+      html += '<div class="ht">' +
+        '<div class="ht-head"><span class="n">Turn ' + (i + 1) + '</span>' +
+        '<span class="tm">' + e.time + (e.focus ? " \u00b7 " + e.focus + " focus" : "") + '</span>' +
+        '<span class="tot">' + e.total + '</span></div>' +
+        '<div class="ht-line">' + (types ? types + "<br>" : "") + lines + '</div>' +
+      '</div>';
+    });
+    $("hist").innerHTML = html;
+  }
+
+  function startSession(){
+    history = [];
+    sessionDay = today();
+    bankedFocus = 0;
+    beltUsed = false;
+    uncannyUsed = false;
+    lastTurn = null;
+    bestTurn = null;
+    G.attune = false; G.maul = false; G.maulAct = false; G.reaction = false;
+    $("swAttune").setAttribute("aria-pressed","false");
+    $("effAttune").className = "eff off";
+    $("swMaul").setAttribute("aria-pressed","false");
+    $("effMaul").className = "eff off";
+    $("maulActWrap").hidden = true;
+    $("maulAct").checked = false;
+    freshTurn();
+    renderHistory();
+  }
+
   function refreshAll(){
     cards.forEach(function(c){ c.recalc(); });
     paintEconomy();
     paintNow();
+    renderReadout();
 
     var t = turnSplit();
     $("turnTotal").textContent = t.total;
     var parts = Object.keys(t.byType).map(function(k){ return k + " " + t.byType[k]; });
     $("runs").textContent = parts.length ? parts.join(" \u00b7 ") : "nothing yet";
     $("commit").disabled = (t.count === 0);
-    $("combatTotal").innerHTML = "combat <b>" + combatDamage + "</b>";
+    $("lastTurn").textContent = (lastTurn === null) ? "\u2013" : lastTurn;
+    $("bestTurn").textContent = (bestTurn === null) ? "\u2013" : bestTurn;
   }
 
   function freshTurn(){
+    var keepAC = cards.length ? cards[0].getAC() : null;
     cards.slice().forEach(function(c){ c.remove(); });
     cards = [];
     G.reaction = false;
     G.maulAct = false;
     $("maulAct").checked = false;
-    makeCard(); renumber(); refreshAll();
+    var fresh = makeCard();
+    if(keepAC !== null) fresh.setAC(keepAC);
+    renumber(); refreshAll();
     if(window.scrollTo) try{ window.scrollTo({ top:0, behavior:"smooth" }); }catch(e){}
   }
 
-  $("commit").addEventListener("click", function(){
+  // ---- two-tap confirm: first tap arms the button, second tap acts ----
+  var armed = null, armTimer = null;
+
+  function disarm(){
+    if(armed){
+      armed.el.textContent = armed.label;
+      armed.el.className = armed.cls;
+      armed = null;
+    }
+    clearTimeout(armTimer);
+  }
+
+  function confirmTap(el, prompt, act){
+    if(armed && armed.el === el){
+      var fn = armed.act;
+      disarm();
+      fn();
+      return;
+    }
+    disarm();
+    armed = { el: el, label: el.textContent, cls: el.className, act: act };
+    el.textContent = prompt;
+    el.className = armed.cls + " arm";
+    armTimer = setTimeout(disarm, 4000);
+  }
+
+  function doCommit(){
     var t = turnSplit();
     if(!t.count) return;
-    combatDamage += t.total;
-    // lock in this turn's focus spend
-    var groups = [], stunned = 0;
+    lastTurn = t.total;
+    var isBest = (bestTurn === null) || (t.total > bestTurn);
+    if(isBest) bestTurn = t.total;
+    var bestEl = $("bestTurn").parentNode;
+    bestEl.className = "st best" + (isBest ? " fresh" : "");
+    setTimeout(function(){ bestEl.className = "st best"; }, 600);
+
+    // lock in this turn's focus spend - it persists until a rest or a refill
+    var groups = [], stunned = 0, bursts = 0;
     cards.forEach(function(c){
       if(c.isStunning()) stunned++;
-      if(c.getType() === "Flurry of Blows" && groups.indexOf(c.groupId) === -1) groups.push(c.groupId);
+      var t = c.getType();
+      if(t === "Flurry of Blows" && groups.indexOf(c.groupId) === -1) groups.push(c.groupId);
+      if(t === "Magic Action \u2014 Elemental Burst") bursts++;
     });
-    bankedFocus += groups.length + stunned;
+    var spent = groups.length + stunned + (bursts * 2);
+    bankedFocus += spent;
+
+    // log the turn before the cards are torn down
+    var entry = { time: clockNow(), total: t.total, byType: t.byType,
+                  focus: spent, strikes: [] };
+    cards.forEach(function(c){
+      var r = c.readout;
+      if(!r) return;
+      if(r.face === null && !r.mainFaces.length && !r.forceFaces.length) return;
+      entry.strikes.push({
+        type: r.type || "no type",
+        face: r.face,
+        atk: r.atkTotal,
+        ac: r.ac,
+        crit: r.crit,
+        fumble: r.fumble,
+        stun: r.stun,
+        faces: r.mainFaces.slice(),
+        force: r.forceFaces.slice(),
+        dmgType: r.dmgType
+      });
+    });
+    history.push(entry);
+    renderHistory();
+
     freshTurn();
+  }
+
+  // clears the rolls but keeps the cards, their types, their ACs, and the tallies
+  function clearRolls(){
+    cards.forEach(function(c){ c.clearRolls(); });
+    G.reaction = false;
+    G.maulAct = false;
+    $("maulAct").checked = false;
+    refreshAll();
+  }
+
+  $("commit").addEventListener("click", function(){
+    if(!turnSplit().count) return;
+    confirmTap(this, "Confirm?", doCommit);
+  });
+
+  $("reset").addEventListener("click", function(){
+    confirmTap(this, "Discard?", freshTurn);
+  });
+
+  $("clearRolls").addEventListener("click", clearRolls);
+
+  $("histToggle").addEventListener("click", function(){
+    var h = $("hist");
+    h.hidden = !h.hidden;
+    this.textContent = h.hidden ? "Show history" : "Hide history";
+  });
+
+  $("sessionReset").addEventListener("click", function(){
+    confirmTap(this, "Reset?", startSession);
+  });
+
+  $("gateNew").addEventListener("click", function(){
+    startSession();
+    $("gate").hidden = true;
+  });
+
+  $("gateResume").addEventListener("click", function(){
+    $("gate").hidden = true;
   });
 
   $("addAttack").addEventListener("click", function(){
-    var c = makeCard(); renumber(); refreshAll();
+    var c = makeCard();
+    renumber();
+    refreshAll();
     if(c.scrollIntoView) c.scrollIntoView({ behavior:"smooth", block:"start" });
   });
 
-  $("reset").addEventListener("click", freshTurn);
+  // tapping anywhere else cancels an armed button
+  document.addEventListener("click", function(e){
+    if(armed && !armed.el.contains(e.target)) disarm();
+  }, true);
 
-  makeCard();
-  renumber();
-  refreshAll();
+  (function boot(){
+    makeCard();
+    renumber();
+    refreshAll();
+    renderHistory();
+    // a session lives inside one calendar day
+    sessionDay = today();
+    $("gateLine").innerHTML = "Ready to play &middot; " + sessionDay +
+      "<br>A session covers one day. Starting a new one clears the history, " +
+      "the focus spend and the turn records.";
+    $("gateResume").hidden = true;
+  })();
 })();
 </script>
 </body>
