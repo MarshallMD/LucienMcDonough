@@ -20,6 +20,8 @@
     --text:#E7E8E9; --mute:#989DA2; --dim:#6B7176;
     --red:#C8342B; --red-hi:#E8483B; --red-dim:#6E241E;
     --red-wash:rgba(200,52,43,.13);
+    --go:#5FBF7A; --go-dim:#2F5E3C;
+    --gold:#D9A441;
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
   html,body{margin:0;padding:0;}
@@ -525,6 +527,233 @@
   }
   .ro-sum b{color:var(--text);font-weight:600;}
   .ro-sum .big{color:var(--red-hi);font-size:14px;font-weight:600;}
+
+  /* ---------- masthead ---------- */
+  .mast{
+    display:flex;align-items:flex-start;justify-content:space-between;
+    gap:12px;margin-bottom:12px;
+  }
+  h1{
+    font-weight:900;font-size:21px;letter-spacing:-.025em;margin:0;line-height:1;
+    text-transform:uppercase;font-style:italic;color:var(--text);
+  }
+  h1 span{color:var(--red-hi);text-shadow:0 0 14px rgba(232,72,59,.45);}
+  .mast .who{
+    font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--dim);text-align:right;line-height:1.35;
+    flex:none;
+  }
+  .mast .who em{color:var(--red-hi);font-style:normal;}
+
+  /* ---------- tabs ---------- */
+  .tabs{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:14px;}
+  .tabs button{
+    appearance:none;min-height:46px;background:var(--panel);color:var(--dim);
+    border:1px solid var(--line);border-radius:7px;cursor:pointer;
+    font-family:"IBM Plex Mono",monospace;font-size:10px;font-weight:600;
+    letter-spacing:.14em;text-transform:uppercase;
+  }
+  .tabs button[aria-selected=true]{
+    background:var(--red);border-color:var(--red);color:#fff;
+    box-shadow:0 0 16px rgba(200,52,43,.3);
+  }
+
+  /* ---------- strike-type picker ---------- */
+  .stype{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:9px;}
+  .stype.locked .sbtn{opacity:.45;cursor:default;}
+  .stype.locked .sbtn.on{opacity:1;}
+  .sbtn{
+    appearance:none;min-height:52px;padding:7px 9px;text-align:left;cursor:pointer;
+    background:var(--ink);border:1px solid var(--line);border-radius:6px;color:var(--mute);
+    font-family:"Archivo",sans-serif;font-size:13.5px;font-weight:600;line-height:1.15;
+  }
+  .sbtn em{
+    display:block;font-style:normal;font-family:"IBM Plex Mono",monospace;
+    font-size:8.5px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;
+    color:var(--dim);margin-top:3px;line-height:1.35;
+  }
+  .sbtn.wide{grid-column:1 / -1;}
+  .sbtn.on{
+    background:var(--red);border-color:var(--red);color:#fff;
+    box-shadow:0 0 14px rgba(200,52,43,.3);
+  }
+  .sbtn.on em{color:rgba(255,255,255,.72);}
+
+  /* ---------- limited-use charge rows ---------- */
+  .charge-row{
+    display:flex;align-items:center;gap:9px;padding:11px 12px;
+    border-top:1px solid var(--line-soft);
+  }
+  .charge-row .cn{flex:1;font-size:13px;line-height:1.3;min-width:0;}
+  .charge-row .cn b{font-weight:600;display:block;color:var(--text);}
+  .charge-row .cn small{
+    font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.04em;
+    color:var(--dim);display:block;margin-top:3px;line-height:1.4;
+  }
+  .charge-row input[type=number]{
+    width:56px;flex:none;background:var(--ink);border:1px solid var(--line);
+    border-radius:6px;color:var(--text);font-family:"IBM Plex Mono",monospace;
+    font-size:14px;text-align:center;padding:9px 2px;-moz-appearance:textfield;
+  }
+  .charge-row input::-webkit-outer-spin-button,
+  .charge-row input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0;}
+  .charge-row button{
+    appearance:none;flex:none;min-width:64px;min-height:40px;
+    border:1px solid var(--line);border-radius:6px;
+    background:var(--ink);color:var(--dim);cursor:pointer;
+    font-family:"IBM Plex Mono",monospace;font-size:9.5px;font-weight:600;
+    letter-spacing:.11em;text-transform:uppercase;padding:0 10px;
+  }
+  .charge-row button.ready{border-color:var(--red);color:var(--red-hi);}
+  .charge-row button:disabled{opacity:.4;cursor:not-allowed;border-color:var(--line-soft);}
+
+  /* ---------- Deflect Attacks calculator ---------- */
+  .defl{padding:12px;}
+  .defl-in{display:flex;gap:9px;align-items:flex-end;}
+  .defl-f{flex:1;min-width:0;}
+  .defl-f label{
+    font-family:"IBM Plex Mono",monospace;font-size:8.5px;letter-spacing:.11em;
+    text-transform:uppercase;color:var(--dim);display:block;margin-bottom:5px;line-height:1.3;
+  }
+  .defl-f input{
+    width:100%;background:var(--ink);border:1px solid var(--line);border-radius:6px;
+    color:var(--text);font-family:"IBM Plex Mono",monospace;font-size:17px;
+    text-align:center;padding:10px 2px;-moz-appearance:textfield;
+  }
+  .defl-f input::-webkit-outer-spin-button,
+  .defl-f input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0;}
+  .defl-out{
+    margin-top:12px;border:1px solid var(--line);border-radius:6px;
+    background:var(--ink);padding:12px;text-align:center;
+  }
+  .defl-out .n{
+    font-weight:900;font-size:40px;line-height:1;letter-spacing:-.03em;
+    display:block;color:var(--text);
+  }
+  .defl-out .n.zero{color:var(--go);text-shadow:0 0 16px rgba(95,191,122,.4);}
+  .defl-out .n.empty{color:var(--line);}
+  .defl-out .cap{
+    font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.13em;
+    text-transform:uppercase;color:var(--dim);display:block;margin-top:7px;
+  }
+  .defl-out .sub{display:block;margin-top:8px;font-size:12.5px;color:var(--mute);line-height:1.45;}
+
+  /* ---------- stat quick reference ---------- */
+  .statgrid{display:grid;grid-template-columns:1fr 1fr;}
+  .statgrid > div{
+    padding:10px 12px;border-top:1px solid var(--line-soft);
+  }
+  .statgrid > div:nth-child(odd){border-right:1px solid var(--line-soft);}
+  .statgrid .k{
+    font-family:"IBM Plex Mono",monospace;font-size:8.5px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--dim);display:block;
+  }
+  .statgrid .v{
+    font-family:"Archivo",sans-serif;font-size:19px;font-weight:700;
+    letter-spacing:-.02em;margin-top:3px;display:block;color:var(--text);
+  }
+  .statgrid .v b{color:var(--red-hi);font-weight:700;}
+
+  /* ---------- checks pane ---------- */
+  .sect2{
+    font-family:"IBM Plex Mono",monospace;font-size:9px;font-weight:600;
+    letter-spacing:.15em;text-transform:uppercase;color:var(--red-hi);
+    padding-bottom:4px;margin:16px 0 8px;border-bottom:1px solid var(--line-soft);
+  }
+  .sect2:first-child{margin-top:0;}
+  .chkgrid{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+  .chk{
+    appearance:none;display:flex;align-items:center;gap:8px;
+    min-height:52px;padding:8px 10px;text-align:left;cursor:pointer;
+    background:var(--ink);border:1px solid var(--line);border-radius:6px;
+  }
+  .chk .nm{
+    flex:1;min-width:0;font-family:"Archivo",sans-serif;font-size:13.5px;
+    font-weight:600;color:var(--text);line-height:1.15;
+  }
+  .chk .nm em{
+    display:block;font-style:normal;font-family:"IBM Plex Mono",monospace;
+    font-size:8.5px;letter-spacing:.09em;text-transform:uppercase;
+    color:var(--dim);margin-top:3px;
+  }
+  .chk .mv{
+    flex:none;font-family:"Archivo",sans-serif;font-size:18px;font-weight:700;
+    letter-spacing:-.02em;color:var(--mute);
+  }
+  .chk.prof{border-color:var(--red-dim);}
+  .chk.prof .mv{color:var(--red-hi);}
+  .chk.on{background:var(--red);border-color:var(--red);box-shadow:0 0 14px rgba(200,52,43,.3);}
+  .chk.on .nm, .chk.on .mv{color:#fff;}
+  .chk.on .nm em{color:rgba(255,255,255,.72);}
+
+  /* ---------- check formula ---------- */
+  .fx{
+    display:flex;align-items:baseline;gap:8px;padding:6px 0;
+    border-bottom:1px solid var(--line-soft);
+    font-family:"IBM Plex Mono",monospace;font-size:12px;
+  }
+  .fx:last-child{border-bottom:none;}
+  .fx .t{flex:1;color:var(--mute);min-width:0;}
+  .fx .v{flex:none;font-weight:600;color:var(--text);}
+  .fx.none .t, .fx.none .v{color:var(--dim);}
+  .fx.sum{border-top:1px solid var(--line);margin-top:3px;padding-top:9px;}
+  .fx.sum .t{color:var(--text);font-weight:600;}
+  .fx.sum .v{font-family:"Archivo",sans-serif;font-size:22px;font-weight:800;color:var(--red-hi);}
+  .rule-note{
+    margin-top:11px;border-left:2px solid var(--red);background:var(--red-wash);
+    padding:9px 11px;font-size:12.5px;line-height:1.5;color:var(--mute);
+  }
+  .rule-note b{color:var(--text);font-weight:600;}
+  .rule-note .k{
+    font-family:"IBM Plex Mono",monospace;font-size:8.5px;letter-spacing:.13em;
+    text-transform:uppercase;color:var(--dim);margin-right:7px;
+  }
+  #ckBoosts .rule-note{margin-top:7px;padding:8px 11px;font-size:12px;}
+  #ckBoosts .rule-note .k{
+    display:block;margin:0 0 3px;color:var(--red);letter-spacing:.1em;font-size:9px;
+  }
+  .rule-note.live{border-left-color:#5FBF7A;background:rgba(95,191,122,.10);}
+  #ckBoosts .rule-note.live .k{color:#5FBF7A;}
+
+  .bar-top{display:flex;align-items:center;gap:11px;margin-bottom:9px;}
+  .bar-top .lab{
+    font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--dim);flex:1;line-height:1.5;min-width:0;
+  }
+  .bar-top .lab small{
+    display:block;color:var(--mute);letter-spacing:.03em;font-size:10px;margin-top:2px;
+  }
+  .bar .combat{display:flex;gap:7px;flex:none;}
+  .bar .combat .st{
+    border:1px solid var(--line);border-radius:6px;padding:5px 9px;
+    text-align:center;min-width:52px;
+  }
+  .bar .combat .st i{
+    font-family:"IBM Plex Mono",monospace;font-size:8px;letter-spacing:.11em;
+    text-transform:uppercase;color:var(--dim);font-style:normal;display:block;
+  }
+  .bar .combat .st b{
+    font-family:"Archivo",sans-serif;font-size:17px;font-weight:700;
+    color:var(--text);font-variant-numeric:tabular-nums;display:block;line-height:1.15;
+  }
+  .bar .combat .st.best b{color:var(--red-hi);}
+  .bar .combat .st.fresh b{animation:pop .5s ease-out;}
+  @keyframes pop{0%{transform:scale(1);}35%{transform:scale(1.28);}100%{transform:scale(1);}}
+  .bar-top .n{
+    font-weight:900;font-size:36px;letter-spacing:-.03em;line-height:1;
+    color:var(--red-hi);font-style:italic;flex:none;
+    text-shadow:0 0 18px rgba(232,72,59,.35);
+  }
+  .bar-btns{display:flex;align-items:center;gap:7px;}
+  .bar-btns button{
+    appearance:none;background:transparent;border:1px solid var(--line);border-radius:6px;
+    color:var(--mute);font-family:"IBM Plex Mono",monospace;font-size:9px;
+    letter-spacing:.11em;text-transform:uppercase;padding:11px 8px;cursor:pointer;flex:1;
+  }
+  .bar-btns button.go{background:var(--red);border-color:var(--red);color:#fff;font-weight:600;}
+  .bar-btns button.go:disabled{border-color:var(--line);color:var(--dim);opacity:.5;}
+  .bar-btns button.arm{background:var(--red-hi);border-color:var(--red-hi);color:#fff;font-weight:600;}
+
   .bar{
     position:fixed;left:0;right:0;bottom:0;z-index:20;
     background:var(--panel-2);border-top:1px solid var(--red);
@@ -653,7 +882,7 @@
 <div class="gate" id="gate">
   <div class="gate-card">
     <h1>Bare <span>Hands</span></h1>
-    <p class="gate-sub">Lucien McDonough &middot; halfling monk 7 &middot; Warrior of the Elements</p>
+    <p class="gate-sub">Lucien McDonough &middot; halfling monk 10 &middot; Warrior of the Elements</p>
     <p class="gate-line" id="gateLine">No session on record.</p>
     <button type="button" class="gate-go" id="gateNew">Start a new session</button>
     <button type="button" class="gate-alt" id="gateResume">Resume</button>
@@ -662,10 +891,21 @@
 
 <div class="wrap">
 
-  <header>
+  <div class="mast">
     <h1>Bare <span>Hands</span></h1>
-    <div class="who">Lucien McDonough<br>Monk 7 · Elements</div>
-  </header>
+    <div class="who">Lucien McDonough<br><em>Monk 10 &middot; Elements</em></div>
+  </div>
+
+  <div class="tabs" role="tablist">
+    <button type="button" id="tabRoll" role="tab" aria-selected="true"
+            aria-controls="paneRoll">Strikes</button>
+    <button type="button" id="tabChecks" role="tab" aria-selected="false"
+            aria-controls="paneChecks">Checks</button>
+  </div>
+
+  <div id="paneRoll" role="tabpanel" aria-labelledby="tabRoll">
+  <div id="attacks"></div>
+  <button id="addAttack" type="button">+ Add attack roll</button>
 
   <!-- ============ ACTION ECONOMY ============ -->
   <div class="block">
@@ -677,9 +917,9 @@
     </div>
     <div class="econ-note" id="econNote"></div>
     <div class="focus" id="focusRow">
-      <span class="nm">Focus points<b id="focusCount">7 of 7 left</b></span>
+      <span class="nm">Focus points<b id="focusCount">10 of 10 left</b></span>
       <span class="pips">
-        <span class="pip" data-i="0"></span><span class="pip" data-i="1"></span><span class="pip" data-i="2"></span><span class="pip" data-i="3"></span><span class="pip" data-i="4"></span><span class="pip" data-i="5"></span><span class="pip" data-i="6"></span>
+        <span class="pip" data-i="0"></span><span class="pip" data-i="1"></span><span class="pip" data-i="2"></span><span class="pip" data-i="3"></span><span class="pip" data-i="4"></span><span class="pip" data-i="5"></span><span class="pip" data-i="6"></span><span class="pip" data-i="7"></span><span class="pip" data-i="8"></span><span class="pip" data-i="9"></span>
       </span>
     </div>
     <div class="focus-tools">
@@ -691,15 +931,27 @@
       <button type="button" id="shortRest">Short rest</button>
       <button type="button" id="longRest">Long rest</button>
     </div>
-    <div class="focus-tools belt">
-      <span class="fp-note">Uncanny Metabolism<br><i>all back &middot; 1/long rest &middot; on initiative</i></span>
+    <div class="charge-row">
+      <span class="cn"><b>Uncanny Metabolism</b><small>all focus back &middot; heal 1d8+7 &middot; on initiative &middot; 1/long rest</small></span>
       <button type="button" id="uncannyUse">Use</button>
     </div>
-    <div class="focus-tools belt">
-      <span class="fp-note">Dragonhide Belt<br><i>action &middot; 1/dawn</i></span>
+    <div class="charge-row">
+      <span class="cn"><b>Dragonhide Belt</b><small>an action &middot; regain 1d8 focus &middot; 1/dawn</small></span>
       <input type="number" id="beltRoll" min="1" max="12" placeholder="1d8" inputmode="numeric"
              aria-label="Belt refill roll">
       <button type="button" id="beltUse">Refill</button>
+    </div>
+    <div class="charge-row">
+      <span class="cn"><b>Eldritch Maul</b><small>bonus action &middot; 1 min &middot; reach 15 ft, +1d6 force a hit &middot; 1/dawn</small></span>
+      <button type="button" id="maulChg">Ready</button>
+    </div>
+    <div class="charge-row">
+      <span class="cn"><b>Guarded Mind</b><small>Mage Slayer &middot; turn a failed INT, WIS or CHA save into a success &middot; 1/short rest</small></span>
+      <button type="button" id="guardChg">Ready</button>
+    </div>
+    <div class="charge-row">
+      <span class="cn"><b>Cone of Cold</b><small>Frostmaiden blessing &middot; 60 ft &middot; con 15 &middot; 8d8 &middot; 1/long rest</small></span>
+      <button type="button" id="coneChg">Ready</button>
     </div>
   </div>
 
@@ -747,8 +999,45 @@
     </div>
   </div>
 
-  <div id="attacks"></div>
-  <button id="addAttack" type="button">+ Add attack roll</button>
+
+  <!-- ============ AT A GLANCE ============ -->
+  <div class="block">
+    <h2>At a glance</h2>
+    <div class="statgrid">
+      <div><span class="k">Unarmed strike</span><span class="v"><b>+10</b> &middot; 1d8+6</span></div>
+      <div><span class="k">Thrown dagger</span><span class="v"><b>+9</b> &middot; 1d8+5</span></div>
+      <div><span class="k">Monk save DC</span><span class="v"><b>16</b></span></div>
+      <div><span class="k">Grapple / Shove DC</span><span class="v"><b>17</b></span></div>
+      <div><span class="k">Armor class</span><span class="v"><b>18</b></span></div>
+      <div><span class="k">Hit points</span><span class="v"><b>73</b> &middot; 10d8</span></div>
+      <div><span class="k">Reach attuned</span><span class="v"><b>15</b> ft</span></div>
+      <div><span class="k">Speed</span><span class="v"><b>50</b> ft</span></div>
+    </div>
+  </div>
+
+
+  <!-- ============ DEFLECT ATTACKS ============ -->
+  <div class="block">
+    <h2>Deflect Attacks <span class="h2-side">reaction</span></h2>
+    <div class="defl">
+      <div class="defl-in">
+        <div class="defl-f">
+          <label for="dIn">Damage coming in</label>
+          <input type="number" id="dIn" min="0" max="200" inputmode="numeric" placeholder="&ndash;">
+        </div>
+        <div class="defl-f">
+          <label for="dRoll">Your d10</label>
+          <input type="number" id="dRoll" min="1" max="10" inputmode="numeric" placeholder="&ndash;">
+        </div>
+      </div>
+      <div class="defl-out">
+        <span class="n empty" id="dOut">&ndash;</span>
+        <span class="cap" id="dCap">Damage you still take</span>
+        <span class="sub" id="dSub">Bludgeoning, piercing or slashing only. Reduces by
+          <b>1d10 + 11</b> &mdash; 12 to 21.</span>
+      </div>
+    </div>
+  </div>
 
   <!-- ============ ROLL HISTORY ============ -->
   <div class="block">
@@ -767,20 +1056,69 @@
     <div class="ro-sum" id="roSum">nothing rolled yet</div>
   </div>
 </div>
-
-<div class="bar">
-  <div class="bar-row">
-    <div class="lab">This turn<small id="runs">nothing yet</small></div>
-    <span class="n" id="turnTotal">0</span>
   </div>
-  <div class="bar-row two">
-    <button type="button" class="go" id="commit">Commit turn</button>
-    <button type="button" id="clearRolls">Reset turn</button>
-    <button type="button" id="reset">Discard</button>
+
+  <div id="paneChecks" role="tabpanel" aria-labelledby="tabChecks" hidden>
+
+    <div class="block">
+      <h2>The roll</h2>
+      <div class="pad">
+        <div class="card-ac"><span class="k">DC</span><span class="ac-val" id="ckDCval">&ndash;</span></div>
+        <div id="ckDCwheel"></div>
+        <div class="wheel-cap">swipe to the DC the DM called</div>
+
+        <div class="readout" id="ckReadout">
+          <span class="n empty" id="ckBig">&ndash;</span>
+          <span class="lab">Total</span>
+          <div class="math" id="ckMath">Pick a check below, then the d20 face you rolled</div>
+        </div>
+
+        <div id="ckD20wheel"></div>
+        <div class="wheel-cap">swipe to the number you rolled</div>
+
+        <div class="sect">The formula</div>
+        <div id="ckFormula"></div>
+
+        <div id="ckBoosts"></div>
+
+        <div class="rule-note">
+          <span class="k">Rule</span>A natural 20 is only automatic on an <b>attack roll</b>.
+          On a check or a save it is just a 20 &mdash; add the modifier and compare to the DC
+          like any other roll. Same for a natural 1.
+        </div>
+      </div>
+    </div>
+
+    <div class="block">
+      <h2>What are you rolling? <span class="h2-side" id="ckPicked">nothing picked</span></h2>
+      <div class="pad">
+        <div class="sect2">Saving throws</div>
+        <div class="chkgrid" id="grpSaves"></div>
+        <div class="sect2">Ability checks</div>
+        <div class="chkgrid" id="grpAbil"></div>
+        <div class="sect2">Skills</div>
+        <div class="chkgrid" id="grpSkills"></div>
+        <div class="sect2">Tools</div>
+        <div class="chkgrid" id="grpTools"></div>
+      </div>
+    </div>
+
+  </div>
+
+
+<div class="bar" id="bar">
+  <div class="bar-top">
+    <div class="lab">Turn damage<small id="runs">nothing yet</small></div>
     <span class="combat" id="turnStats">
       <span class="st"><i>last</i><b id="lastTurn">&ndash;</b></span>
       <span class="st best"><i>best</i><b id="bestTurn">&ndash;</b></span>
     </span>
+    <span class="n" id="turnTotal">0</span>
+  </div>
+  <div class="bar-btns">
+    <button type="button" class="go" id="commit">Commit turn</button>
+    <button type="button" id="clearRolls">Reset turn</button>
+    <button type="button" id="reset">Discard</button>
   </div>
 </div>
 
@@ -790,31 +1128,43 @@
   var $ = function(id){ return document.getElementById(id); };
 
   var UNSET = "";
+  // [value, label, sub-line, wide?]
   var STRIKE_TYPES = [
-    [UNSET, "Choose strike type\u2026"],
-    ["Action — Attack", "Action — Attack (2 strikes)"],
-    ["Action — Thrown Dagger", "Action — Thrown Dagger (2 throws)"],
-    ["Bonus Action — Unarmed Strike", "Bonus Action — Unarmed Strike"],
-    ["Flurry of Blows", "Flurry of Blows (2 strikes)"],
-    ["Magic Action — Elemental Burst", "Magic Action — Elemental Burst"]
+    ["Action \u2014 Attack",                "Attack",         "action \u00b7 +10 \u00b7 1d8+6 \u00b7 \u00d72", false],
+    ["Action \u2014 Thrown Dagger",         "Thrown dagger",  "action \u00b7 +9 \u00b7 1d8+5", false],
+    ["Bonus Action \u2014 Unarmed Strike",  "Unarmed strike", "bonus \u00b7 free", false],
+    ["Flurry of Blows",                     "Flurry of Blows","bonus \u00b7 1 focus \u00b7 \u00d73", false],
+    ["Magic Action \u2014 Elemental Burst", "Elemental Burst","action \u00b7 2 focus \u00b7 20 ft sphere \u00b7 dex 16 \u00b7 3d8", true],
+    ["Magic Action \u2014 Cone of Cold",    "Cone of Cold",   "action \u00b7 1/long rest \u00b7 60 ft cone \u00b7 con 15 \u00b7 8d8", true]
   ];
 
-  var MARTIAL_DIE = 8;   // d8 from level 5 through 10
+  /* =============== character constants ===============
+     Levelling up is a one-block edit: change these and the app follows. */
+  var MONK_LVL     = 10;
+  var DEX = 5, WIS = 3, PROF = 4;             // Dex 20 via Mage Slayer at level 8
+  var TATTOO       = 1;                       // Eldritch Claw Tattoo, +1/+1
+  var BELT         = 1;                       // +1 Dragonhide Belt, monk save DCs
+  var MONK_DC      = 8 + WIS + PROF + BELT;   // 16
+  var GRAPPLE_DC   = 8 + DEX + PROF;          // 17 - Martial Arts uses Dex
+  var DEFLECT_FLAT = DEX + MONK_LVL;          // 15 - reduce by 1d10 + this
+  var MARTIAL_DIE  = 8;                       // d8 from level 5 through 10
 
   // kind drives which rolls, dice and modifiers a card offers
   //   unarmed - tattoo applies, Tavern Brawler rerolls a 1, Maul force die
   //   dagger  - monk weapon, Martial Arts die, but NO tattoo and no Tavern Brawler
   //   burst   - no attack roll at all; three Martial Arts dice, no ability modifier
   var CFG = {
-    "Action — Attack":                { paired:true,  kind:"unarmed", focus:0 },
-    "Action — Thrown Dagger":         { paired:true,  kind:"dagger",  focus:0 },
-    "Bonus Action — Unarmed Strike":  { paired:false, kind:"unarmed", focus:0 },
-    "Flurry of Blows":                { paired:true,  kind:"unarmed", focus:1 },
-    "Magic Action — Elemental Burst": { paired:false, kind:"burst",   focus:2 }
+    "Action — Attack":                { strikes:2, kind:"unarmed", focus:0 },
+    "Action — Thrown Dagger":         { strikes:2, kind:"dagger",  focus:0 },
+    "Bonus Action — Unarmed Strike":  { strikes:1, kind:"unarmed", focus:0 },
+    // Heightened Focus at level 10 makes Flurry three strikes
+    "Flurry of Blows":                { strikes:3, kind:"unarmed", focus:1 },
+    "Magic Action — Elemental Burst": { strikes:1, kind:"burst",   focus:2 },
+    "Magic Action — Cone of Cold":    { strikes:1, kind:"cone",    focus:0 }
   };
-  function cfg(t){ return CFG[t] || { paired:false, kind:"unarmed", focus:0 }; }
-  var ATK_MODS = [["Dexterity",4],["Proficiency",3],["Eldritch Claw Tattoo",1]];
-  var DMG_MODS = [["Dexterity",4],["Eldritch Claw Tattoo",1]];
+  function cfg(t){ return CFG[t] || { strikes:1, kind:"unarmed", focus:0 }; }
+  var ATK_MODS = [["Dexterity",DEX],["Proficiency",PROF],["Eldritch Claw Tattoo",TATTOO]];
+  var DMG_MODS = [["Dexterity",DEX],["Eldritch Claw Tattoo",TATTOO]];
   var TYPES = ["bludgeoning","force","acid","cold","fire","lightning","thunder"];
   // force is always available (Empowered Strikes); the five elements need Attunement
   var NEEDS_ATTUNE = ["acid","cold","fire","lightning","thunder"];
@@ -910,16 +1260,18 @@
       box.textContent = n > 1 ? n : "\u2713";
     });
 
-    var warn = [];
+    var warn = [], anyDamage = turnSplit().total > 0;
     if(action > 1) warn.push("<b>" + action + " actions</b> — you only get one");
     if(bonus > 1) warn.push("<b>" + bonus + " bonus actions</b> — you only get one");
     var lines = [];
     if(warn.length) lines.push(warn.join(" \u00b7 "));
     if(actionGroups.length) lines.push("Attack action: <b>two strikes</b> (Extra Attack), one action.");
     if(burstGroups.length) lines.push("Elemental Burst: a <b>Magic action</b> and <b>2 focus</b>.");
-    if(stunned) lines.push("Stunning Strike is <b>once per turn</b> \u2014 CON save DC 15.");
-    if(groups.length) lines.push("Flurry of Blows: <b>two strikes</b>, one bonus action, one focus point.");
+    if(stunned) lines.push("Stunning Strike is <b>once per turn</b> \u2014 CON save DC " + MONK_DC + ".");
+    if(groups.length) lines.push("Flurry of Blows: <b>three strikes</b> (Heightened Focus), one bonus action, one focus point.");
     if(G.maulAct) lines.push("Eldritch Maul is charging a bonus action this turn.");
+    if(anyDamage) lines.push("<b>Concentration Breaker</b>: anything you damage that is concentrating " +
+                             "makes its save with <b>disadvantage</b>.");
     if(!warn.length && !lines.length){
       lines.push(unset
         ? "Pick a strike type on each card and these tick themselves. Tap Reaction for Deflect Attacks."
@@ -927,7 +1279,7 @@
     }
     $("econNote").innerHTML = lines.join("<br>");
 
-    var MAX = 7;   // Focus Points equal monk level
+    var MAX = 10;   // Focus Points equal monk level
     var pending = groups.length + stunned + (burstGroups.length * 2);
     var focus = bankedFocus + pending;
     var left = MAX - focus;
@@ -944,12 +1296,12 @@
       (beltUsed ? " &middot; belt spent" : "");
     var bu = $("beltUse");
     bu.disabled = beltUsed;
-    bu.className = beltUsed ? "" : "armed";
+    bu.className = beltUsed ? "" : "ready";
     bu.textContent = beltUsed ? "Spent" : "Refill";
 
     var uu = $("uncannyUse");
     uu.disabled = uncannyUsed;
-    uu.className = uncannyUsed ? "" : "armed";
+    uu.className = uncannyUsed ? "" : "ready";
     uu.textContent = uncannyUsed ? "Spent" : "Use";
   }
 
@@ -971,12 +1323,18 @@
     refreshAll();
   });
   $("shortRest").addEventListener("click", function(){
-    bankedFocus = 0;        // focus only - the belt and Uncanny stay spent
+    bankedFocus = 0;
+    guardCharged = true;        // Mage Slayer recharges on a short or long rest
+    paintCharges();        // focus only - the belt and Uncanny stay spent
     refreshAll();
   });
 
   $("longRest").addEventListener("click", function(){
     bankedFocus = 0;
+    maulCharged = true;      // 1/dawn, and a long rest carries you through dawn
+    coneCharged = true;      // 1/long rest
+    guardCharged = true;
+    paintCharges();
     uncannyUsed = false;    // Uncanny recharges on a long rest
     beltUsed = false;       // a long rest carries you through dawn
     lastTurn = null;
@@ -1049,18 +1407,42 @@
     line.appendChild(idx); line.appendChild(kill);
     top.appendChild(line);
 
-    var sel = el("select");
+    // strike-type picker: a tappable grid, not a dropdown
+    var selValue = UNSET;
+    var stype = el("div","stype");
+    stype.setAttribute("role","group");
+    stype.setAttribute("aria-label","Strike type");
     STRIKE_TYPES.forEach(function(t){
-      var o = el("option"); o.value = t[0]; o.textContent = t[1]; sel.appendChild(o);
+      var b = el("button","sbtn" + (t[3] ? " wide" : ""),
+                 esc(t[1]) + "<em>" + esc(t[2]) + "</em>");
+      b.type = "button";
+      b.dataset.v = t[0];
+      b.setAttribute("aria-pressed","false");
+      b.addEventListener("click", function(){
+        if(stype.classList.contains("locked")) return;
+        selValue = (selValue === t[0]) ? UNSET : t[0];
+        paintType();
+        onTypeChange(card);
+      });
+      stype.appendChild(b);
     });
-    sel.value = UNSET;
-    sel.setAttribute("aria-label","Strike type");
-    sel.className = "unset";
-    sel.addEventListener("change", function(){
-      sel.className = sel.value ? "" : "unset";
-      onTypeChange(card);
-    });
-    top.appendChild(sel);
+    function paintType(){
+      Array.prototype.forEach.call(stype.children, function(b){
+        var on = (b.dataset.v === selValue);
+        b.className = "sbtn" + (b.dataset.v.indexOf("Magic Action") === 0 ? " wide" : "") +
+                      (on ? " on" : "");
+        b.setAttribute("aria-pressed", on ? "true" : "false");
+      });
+    }
+    // a shim so the rest of the card code keeps working unchanged
+    var sel = {
+      get value(){ return selValue; },
+      set value(v){ selValue = v; paintType(); },
+      disabled: false,
+      className: ""
+    };
+    paintType();
+    top.appendChild(stype);
     var pairNote = el("div");
     pairNote.style.cssText = "font-family:'IBM Plex Mono',monospace;font-size:9.5px;" +
       "letter-spacing:.06em;color:var(--dim);margin-top:6px;";
@@ -1120,9 +1502,13 @@
     pad.appendChild(faceCap);
 
     var burstNote = el("div","burst-note");
-    burstNote.innerHTML = '<b>No attack roll.</b> Every creature in a 20 ft sphere makes a ' +
+    var BURST_NOTE = '<b>No attack roll.</b> Every creature in a 20 ft sphere makes a ' +
       '<b>Dexterity save vs DC 15</b>, taking three Martial Arts dice on a failure and half ' +
       'as much on a success. Costs a Magic action and 2 Focus Points.';
+    var CONE_NOTE = '<b>No attack roll.</b> Blessing of the Frostmaiden: every creature in a ' +
+      '<b>60 ft cone</b> makes a <b>Constitution save vs DC 15</b>, taking <b>8d8 cold</b> on a ' +
+      'failure and half on a success. A Magic action, no Focus Points, <b>once per long rest</b>.';
+    burstNote.innerHTML = BURST_NOTE;
     burstNote.style.display = "none";
     pad.appendChild(burstNote);
 
@@ -1237,6 +1623,17 @@
     }
 
     // how many creatures failed the save and how many made it
+    // Blessing of the Frostmaiden: 8d8 cold in a 60 ft cone, once per long rest
+    var coneRows = [];
+    for(var ci = 1; ci <= 8; ci++){
+      var cr = dieRow("Cone die " + ci, "d8", false, false, 8);
+      cr.dataset.cone = "1";
+      cr.style.display = "none";
+      diceBox.appendChild(cr);
+      dieRows[dieRows.length - 1].isConeDie = true;
+      coneRows.push(dieRows[dieRows.length - 1]);
+    }
+
     var tally = el("div","burst-tally");
     tally.style.display = "none";
     function counter(label, note){
@@ -1422,18 +1819,21 @@
       var isCrit = (f === 20);
       var k = cfg(sel.value).kind;
       var isBurst = (k === "burst");
+      var isCone  = (k === "cone");
+      var isArea  = isBurst || isCone;
       var isDagger = (k === "dagger");
 
       card.classList.toggle("is-crit", isCrit);
-      card.classList.toggle("is-burst", isBurst);
+      card.classList.toggle("is-burst", isArea);
 
       // Elemental Burst forces a save instead of rolling to hit
-      acRow.style.display = isBurst ? "none" : "";
-      acWrap.style.display = isBurst ? "none" : "";
-      readout.style.display = isBurst ? "none" : "";
-      faceCap.style.display = isBurst ? "none" : "";
-      ww.style.display = isBurst ? "none" : "";
-      burstNote.style.display = isBurst ? "" : "none";
+      acRow.style.display = isArea ? "none" : "";
+      acWrap.style.display = isArea ? "none" : "";
+      readout.style.display = isArea ? "none" : "";
+      faceCap.style.display = isArea ? "none" : "";
+      ww.style.display = isArea ? "none" : "";
+      burstNote.style.display = isArea ? "" : "none";
+      if(isArea) burstNote.innerHTML = isCone ? CONE_NOTE : BURST_NOTE;
 
       // the tattoo is unarmed-only, so it switches off for daggers and the burst
       [atkBox, dmgBox].forEach(function(box){
@@ -1441,19 +1841,27 @@
           var nm = row.querySelector(".name");
           if(!nm) return;
           var isTattoo = nm.textContent.indexOf("Tattoo") !== -1;
-          var off = (isTattoo && k !== "unarmed") || isBurst;
+          var off = (isTattoo && k !== "unarmed") || isArea;
           row.className = "row" + (off ? " muted" : "");
           var cb = row.querySelector("input[type=checkbox]");
           if(cb) cb.disabled = off;
         });
       });
 
-      tally.style.display = isBurst ? "" : "none";
-      addDie.style.display = isBurst ? "none" : "";
-      if(!isBurst){ failedCt.reset(); savedCt.reset(); }
+      tally.style.display = isArea ? "" : "none";
+      addDie.style.display = isArea ? "none" : "";
+      if(!isArea){ failedCt.reset(); savedCt.reset(); }
 
       dieRows.forEach(function(e, i){
         // burst dice only appear for a burst; the ordinary dice only appear otherwise
+        if(e.isConeDie){
+          e.row.style.display = isCone ? "" : "none";
+          e.row.className = "die-row";
+          e.main.paint(!isCone);
+          e.crit.node.style.display = "none";
+          if(!isCone){ e.main.value = null; e.crit.value = null; }
+          return;
+        }
         if(e.isBurstDie){
           e.row.style.display = isBurst ? "" : "none";
           e.row.className = "die-row";
@@ -1462,8 +1870,8 @@
           if(!isBurst){ e.main.value = null; e.crit.value = null; }
           return;
         }
-        e.row.style.display = isBurst ? "none" : "";
-        if(isBurst){
+        e.row.style.display = isArea ? "none" : "";
+        if(isArea){
           e.main.value = null; e.crit.value = null;
           e.row.className = "die-row muted";
           return;
@@ -1485,6 +1893,7 @@
       // Elemental Burst picks its own element and is not gated on Attunement,
       // but it has no force option
       if(isBurst) effType = (NEEDS_ATTUNE.indexOf(wanted) !== -1) ? wanted : "thunder";
+      if(isCone) effType = "cold";   // Cone of Cold is always cold
       typeName.innerHTML = "<b>Damage type</b><small>" +
         (isBurst ? (NEEDS_ATTUNE.indexOf(typeSel.value) === -1
                       ? "no force on a burst \u2014 using thunder"
@@ -1495,7 +1904,7 @@
                         : "force or bludgeoning without Attunement")) + "</small>";
 
       var am = sumMods(atkBox);
-      if(isBurst){
+      if(isArea){
         bigN.textContent = "\u2013"; bigN.className = "n empty";
         math.innerHTML = "";
         acVerdict.className = "verdict"; acVerdict.textContent = "";
@@ -1556,7 +1965,7 @@
 
       // a burst deals its roll in full to everything that failed, half to everything that saved
       var burstFull = 0, burstHalf = 0, nFail = 0, nSave = 0;
-      if(isBurst){
+      if(isArea){
         burstFull = mainSum;
         burstHalf = Math.floor(mainSum / 2);
         nFail = failedCt.get();
@@ -1571,9 +1980,9 @@
         breakdown.innerHTML = "";
       } else {
         dmgN.textContent = total; dmgN.className = "n";
-        dmgLab.innerHTML = "Damage" + (isCrit && !isBurst ? " <span style='color:var(--red-hi)'>crit</span>" : "");
+        dmgLab.innerHTML = "Damage" + (isCrit && !isArea ? " <span style='color:var(--red-hi)'>crit</span>" : "");
         var rows = "";
-        if(isBurst){
+        if(isArea){
           rows += '<div class="brk"><span class="t">' + typeName2 + '</span>' +
                   '<span class="d">' + (mainFaces.join(" + ") || "0") +
                   ' = <b>' + burstFull + '</b> full, ' + burstHalf + ' on a save</span>' +
@@ -1602,19 +2011,19 @@
       card.readout = {
         type: sel.value,
         kind: k,
-        face: isBurst ? null : f,
+        face: isArea ? null : f,
         crit: isCrit,
         fumble: (f === 1),
         atkParts: am.parts.slice(),
-        atkTotal: (isBurst || f === null) ? null : f + am.total,
+        atkTotal: (isArea || f === null) ? null : f + am.total,
         mainFaces: mainFaces.slice(),
         forceFaces: forceFaces.slice(),
         dmgParts: dm.parts.slice(),
         dmgTotal: dm.total,
         dmgType: effType,
         stun: stunCb.checked,
-        ac: isBurst ? null : card.getAC(),
-        burst: isBurst ? { full: burstFull, half: burstHalf,
+        ac: isArea ? null : card.getAC(),
+        burst: isArea ? { full: burstFull, half: burstHalf,
                            failed: nFail, saved: nSave } : null
       };
     };
@@ -1645,6 +2054,7 @@
     card.setType = function(v){ sel.value = v; sel.className = v ? "" : "unset"; };
     card.lockType = function(on){
       sel.disabled = on;
+      stype.classList.toggle("locked", !!on);
       pairNote.textContent = on
         ? "second strike of the pair \u2014 set on the first card"
         : "";
@@ -1688,6 +2098,12 @@
 
   var groupSeq = 0;
 
+  // every card in this card's strike group, in table order, itself included
+  function groupOf(card){
+    if(!card.groupId) return [card];
+    return cards.filter(function(c){ return c.groupId === card.groupId; });
+  }
+
   function partnerOf(card){
     for(var i = 0; i < cards.length; i++){
       if(cards[i] !== card && cards[i].groupId && cards[i].groupId === card.groupId){
@@ -1697,30 +2113,54 @@
     return null;
   }
 
-  function isPaired(t){ return cfg(t).paired; }
+  function strikesFor(t){ return cfg(t).strikes || 1; }
+  function isPaired(t){ return strikesFor(t) > 1; }
 
   function onTypeChange(card){
     var t = card.getType();
     if(isPaired(t)){
+      var want = strikesFor(t);
       if(!card.groupId){
         card.groupId = ++groupSeq;
         card.part = 1;
-        var partner = makeCard(card);
-        partner.groupId = card.groupId;
-        partner.part = 2;
-        partner.setType(t);
-        partner.lockType(true);
+        var after = card;
+        for(var k = 2; k <= want; k++){
+          var partner = makeCard(after);
+          partner.groupId = card.groupId;
+          partner.part = k;
+          partner.setType(t);
+          partner.lockType(true);
+          after = partner;
+        }
       } else {
-        // switched between two paired types - keep the partner in sync
-        var p = partnerOf(card);
-        if(p && p.getType() !== t) p.setType(t);
+        // switched between grouped types - resize the group and keep it in sync
+        var mates = groupOf(card);
+        mates.forEach(function(p){ if(p !== card && p.getType() !== t) p.setType(t); });
+        var have = mates.length;
+        if(have < want){
+          var tail = mates[mates.length - 1];
+          for(var j = have + 1; j <= want; j++){
+            var extra = makeCard(tail);
+            extra.groupId = card.groupId;
+            extra.part = j;
+            extra.setType(t);
+            extra.lockType(true);
+            tail = extra;
+          }
+        } else if(have > want){
+          mates.slice(want).forEach(function(p){
+            cards = cards.filter(function(c){ return c !== p; });
+            p.remove();
+          });
+        }
+        groupOf(card).forEach(function(p,i){ p.part = i + 1; });
       }
     } else if(card.groupId){
-      var p = partnerOf(card);
-      if(p){
+      groupOf(card).forEach(function(p){
+        if(p === card) return;
         cards = cards.filter(function(c){ return c !== p; });
         p.remove();
-      }
+      });
       card.groupId = null;
       card.part = null;
       card.lockType(false);
@@ -2065,6 +2505,421 @@
   $("gateResume").addEventListener("click", function(){
     $("gate").hidden = true;
   });
+
+  /* =============== standalone carousel (Checks pane) =============== */
+  function buildWheel(opts){
+    var W = 44;
+    var ww = el("div","wheel-wrap");
+    var wheel = el("div","wheel");
+    wheel.setAttribute("role","listbox");
+    wheel.setAttribute("aria-label", opts.label || "value");
+    for(var i = opts.min; i <= opts.max; i++){
+      var t = el("button","tick", String(i));
+      t.type = "button"; t.dataset.v = i; t.setAttribute("role","option");
+      wheel.appendChild(t);
+    }
+    ww.appendChild(wheel);
+    var frame = el("div","wheel-frame");
+    ww.appendChild(frame);
+    ww.appendChild(el("div","fade l"));
+    ww.appendChild(el("div","fade r"));
+
+    var value = null, lock = false, timer = null;
+    var hot = opts.hot || [];
+
+    function pad(){
+      var w = wheel.clientWidth;
+      if(!w) return;
+      var side = Math.max(0, (w - W) / 2);
+      wheel.style.paddingLeft = side + "px";
+      wheel.style.paddingRight = side + "px";
+      center(value === null ? opts.start : value, "auto");
+    }
+    function center(v, behavior){
+      var t = wheel.querySelector('.tick[data-v="' + v + '"]');
+      if(!t) return;
+      lock = true;
+      var left = t.offsetLeft - wheel.clientWidth / 2 + W / 2;
+      if(wheel.scrollTo) wheel.scrollTo({ left:left, behavior:behavior || "smooth" });
+      else wheel.scrollLeft = left;
+      setTimeout(function(){ lock = false; }, 260);
+    }
+    function nearest(){
+      var mid = wheel.scrollLeft + wheel.clientWidth / 2, best = null, bd = Infinity;
+      Array.prototype.forEach.call(wheel.children, function(t){
+        var dd = Math.abs(t.offsetLeft + W / 2 - mid);
+        if(dd < bd){ bd = dd; best = t; }
+      });
+      return best;
+    }
+    function paint(){
+      Array.prototype.forEach.call(wheel.children, function(t){
+        var v = parseInt(t.dataset.v, 10);
+        t.className = "tick" +
+          (v === value ? " sel" + (hot.indexOf(v) !== -1 ? " hot" : "") : "") +
+          (value !== null && Math.abs(v - value) === 1 ? " near" : "");
+        t.setAttribute("aria-selected", v === value ? "true" : "false");
+      });
+      frame.className = "wheel-frame" + (value !== null ? " live" : "");
+    }
+    wheel.addEventListener("scroll", function(){
+      if(lock) return;
+      clearTimeout(timer);
+      timer = setTimeout(function(){
+        var t = nearest();
+        if(!t) return;
+        var v = parseInt(t.dataset.v, 10);
+        if(v !== value){ value = v; paint(); opts.onChange(); }
+      }, 90);
+    }, { passive:true });
+    wheel.addEventListener("click", function(e){
+      var t = e.target.closest(".tick");
+      if(!t) return;
+      value = parseInt(t.dataset.v, 10);
+      center(value); paint(); opts.onChange();
+    });
+    window.addEventListener("resize", pad);
+
+    return {
+      el: ww,
+      get: function(){ return value; },
+      clear: function(){ value = null; paint(); center(opts.start, "auto"); },
+      layout: pad
+    };
+  }
+
+  /* =============== tabs =============== */
+  (function(){
+    var tR = $("tabRoll"), tC = $("tabChecks");
+    var pR = $("paneRoll"), pC = $("paneChecks");
+    function show(which){
+      var roll = (which === "roll");
+      tR.setAttribute("aria-selected", roll ? "true" : "false");
+      tC.setAttribute("aria-selected", roll ? "false" : "true");
+      pR.hidden = !roll;
+      pC.hidden = roll;
+      $("bar").style.display = roll ? "" : "none";
+      if(!roll) ckLayout();
+      if(window.scrollTo) try{ window.scrollTo({ top:0, behavior:"smooth" }); }catch(e){}
+    }
+    tR.addEventListener("click", function(){ show("roll"); });
+    tC.addEventListener("click", function(){ show("checks"); });
+  })();
+
+  /* =============== once-per-rest charges =============== */
+  var maulCharged = true, coneCharged = true, guardCharged = true;
+
+  function paintCharges(){
+    var gd = $("guardChg");
+    gd.disabled = !guardCharged;
+    gd.className = guardCharged ? "ready" : "";
+    gd.textContent = guardCharged ? "Ready" : "Spent";
+    var m = $("maulChg");
+    m.disabled = !maulCharged;
+    m.className = maulCharged ? "ready" : "";
+    m.textContent = maulCharged ? "Ready" : "Spent";
+    var c = $("coneChg");
+    c.disabled = !coneCharged;
+    c.className = coneCharged ? "ready" : "";
+    c.textContent = coneCharged ? "Ready" : "Spent";
+  }
+  $("guardChg").addEventListener("click", function(){
+    if(!guardCharged) return;
+    guardCharged = false;
+    paintCharges();
+  });
+  $("maulChg").addEventListener("click", function(){
+    if(!maulCharged) return;
+    maulCharged = false;
+    if(!G.maul && $("swMaul")) $("swMaul").click();   // turn the effect on as well
+    paintCharges();
+  });
+  $("coneChg").addEventListener("click", function(){
+    if(!coneCharged) return;
+    coneCharged = false;
+    paintCharges();
+  });
+
+  /* =============== Deflect Attacks calculator =============== */
+  (function(){
+    var inc = $("dIn"), roll = $("dRoll"), out = $("dOut"), cap = $("dCap"), sub = $("dSub");
+    function calc(){
+      var dmg = parseInt(inc.value, 10);
+      var d10 = parseInt(roll.value, 10);
+      if(isNaN(dmg)){
+        out.textContent = "–"; out.className = "n empty";
+        cap.textContent = "Damage you still take";
+        sub.innerHTML = "Bludgeoning, piercing or slashing only. Reduces by <b>1d10 + " +
+                        DEFLECT_FLAT + "</b> — " + (1 + DEFLECT_FLAT) + " to " + (10 + DEFLECT_FLAT) + ".";
+        return;
+      }
+      if(isNaN(d10)){
+        var lo = Math.max(0, dmg - (10 + DEFLECT_FLAT));
+        var hi = Math.max(0, dmg - (1 + DEFLECT_FLAT));
+        out.textContent = lo + "–" + hi; out.className = "n";
+        cap.textContent = "Before your d10";
+        sub.innerHTML = "Roll the d10 to settle it. Averages <b>" +
+                        Math.max(0, Math.round((dmg - (5.5 + DEFLECT_FLAT)) * 10) / 10) + "</b>.";
+        return;
+      }
+      var left = Math.max(0, dmg - (d10 + DEFLECT_FLAT));
+      out.textContent = left;
+      out.className = "n" + (left === 0 ? " zero" : "");
+      cap.textContent = "Damage you still take";
+      if(left === 0){
+        sub.innerHTML = "Reduced to <b>zero</b>. Spend <b>1 focus</b> to redirect <b>2d8+4</b> — " +
+                        "5 ft off a melee hit, 60 ft off a ranged one, Dex save " + MONK_DC + ".";
+      } else {
+        sub.innerHTML = "Reduced " + (d10 + DEFLECT_FLAT) + " of " + dmg +
+                        ". Redirect needs it at zero.";
+      }
+    }
+    inc.addEventListener("input", calc);
+    roll.addEventListener("input", calc);
+    calc();
+  })();
+
+  /* =============== checks, saves, skills and tools =============== */
+  var ABIL = {
+    str:{n:"Strength",     m:0},  dex:{n:"Dexterity",    m:5},
+    con:{n:"Constitution", m:2},  int:{n:"Intelligence", m:-1},
+    wis:{n:"Wisdom",       m:3},  cha:{n:"Charisma",     m:-1}
+  };
+  var SAVE_PROF = { str:true, dex:true };            // monk save proficiencies
+  var SKILLS = [
+    ["Acrobatics","dex",1],["Animal Handling","wis",0],["Arcana","int",0],
+    ["Athletics","str",0],["Deception","cha",0],["History","int",0],
+    ["Insight","wis",1],["Intimidation","cha",0],["Investigation","int",0],
+    ["Medicine","wis",0],["Nature","int",0],["Perception","wis",1],
+    ["Performance","cha",0],["Persuasion","cha",0],["Religion","int",0],
+    ["Sleight of Hand","dex",0],["Stealth","dex",1],["Survival","wis",0]
+  ];
+  var TOOLS = [
+    ["Woodcarver's Tools","dex",1],["Navigator's Tools","wis",1]
+  ];
+
+  /* ---- what Lucien brings to a d20 Test beyond ability + proficiency ----
+     Nothing here is a flat bonus, so none of it touches the total. These are
+     the rerolls, advantages and after-the-fact effects that are easy to forget
+     at the table, surfaced for whichever roll is picked. */
+  var GUARDED = ["Guarded Mind",
+    "Mage Slayer: turn <b>one</b> failed INT, WIS or CHA save into a success. " +
+    "1 per short rest. No action, no focus."];
+  var SPIN = ["Time Well Spin't",
+    "<b>Advantage</b> on History checks about the Coin Spinners, and no disadvantage " +
+    "on Charisma checks against one you have studied for 10 minutes."];
+
+  var CK_NOTES = {
+    "save|dex": [
+      ["Evasion",
+       "On anything that allows a Dex save for half, a success takes <b>zero</b> " +
+       "and a failure takes half. Off while Incapacitated."],
+      ["Patient Defense",
+       "Dodge gives <b>advantage</b> on Dex saves. 1 focus, bonus action, and it " +
+       "also hands you 2d8 temp HP."]
+    ],
+    "save|wis": [
+      GUARDED,
+      ["Brave", "Halfling: <b>advantage</b> on a save against being Frightened."],
+      ["Self-Restoration",
+       "Charmed or Frightened ends by itself at the end of your turn, so a failure " +
+       "costs one turn rather than the fight."]
+    ],
+    "save|int": [GUARDED],
+    "save|cha": [GUARDED],
+    "save|con": [
+      ["Self-Restoration",
+       "The <b>Poisoned condition</b> ends at the end of your turn. The damage " +
+       "still landed; only the condition lifts."]
+    ],
+    "save|str": [
+      ["Not your save, but close",
+       "+4 with proficiency. A grapple or shove against you can be escaped with " +
+       "<b>Acrobatics +9</b> instead, which is a check, not this save."]
+    ]
+  };
+
+  var CK_SKILL_NOTES = {
+    "Stealth": [["Naturally Stealthy",
+      "Halfling: you can hide behind any creature at least one size larger than you."]],
+    "Acrobatics": [["Escaping a grapple",
+      "Use this, not Athletics. +9 against their DC, and Acrobatic Movement lets you " +
+      "run up walls and across liquids once you are free."]],
+    "Athletics": [["Hand it off",
+      "+0 and no proficiency. For a grapple escape use <b>Acrobatics +9</b>; for " +
+      "shoving, your unarmed Shove is DC 17 and needs no check at all."]],
+    "Perception": [["Passive 17",
+      "Runs without a roll for anything you are not actively searching for."]],
+    "Insight": [["Passive 17",
+      "The DM may use your passive Perception instead of a roll; Insight is the one " +
+      "you ask to roll."]],
+    "Medicine": [["Healer's kit, 5 uses",
+      "Stabilizes a dying creature with <b>no roll at all</b>. Always better than this check."]],
+    "History": [SPIN],
+    "Persuasion": [SPIN],
+    "Deception": [SPIN],
+    "Intimidation": [SPIN]
+  };
+
+  var ck = { name:null, abil:null, prof:false, kind:"" };
+  var ckDC = null, ckFace = null;
+  function sgn(v){ return (v >= 0 ? "+" : "−") + Math.abs(v); }
+
+  function chkButton(name, abilKey, prof, kind, sub){
+    var mod = ABIL[abilKey].m + (prof ? PROF : 0);
+    var b = el("button","chk" + (prof ? " prof" : ""));
+    b.type = "button";
+    b.innerHTML = '<span class="nm">' + esc(name) + '<em>' +
+                  (sub || ABIL[abilKey].n.slice(0,3)) + (prof ? " · prof" : "") +
+                  '</em></span><span class="mv">' + sgn(mod) + '</span>';
+    b.addEventListener("click", function(){
+      var same = (ck.name === name && ck.kind === kind);
+      ck.name = same ? null : name;
+      ck.abil = same ? null : abilKey;
+      ck.prof = same ? false : prof;
+      ck.kind = same ? "" : kind;
+      paintChecks();
+    });
+    b._key = kind + "|" + name;
+    b._prof = prof;
+    return b;
+  }
+
+  function buildChecks(){
+    var saves = $("grpSaves"), abils = $("grpAbil"),
+        skills = $("grpSkills"), tools = $("grpTools");
+    [saves, abils, skills, tools].forEach(function(n){ n.innerHTML = ""; });
+    Object.keys(ABIL).forEach(function(k){
+      saves.appendChild(chkButton(ABIL[k].n, k, !!SAVE_PROF[k], "save", "saving throw"));
+      abils.appendChild(chkButton(ABIL[k].n, k, false, "abil", "raw check"));
+    });
+    SKILLS.forEach(function(r){ skills.appendChild(chkButton(r[0], r[1], !!r[2], "skill")); });
+    TOOLS.forEach(function(r){ tools.appendChild(chkButton(r[0], r[1], !!r[2], "tool")); });
+  }
+
+  function paintChecks(){
+    var key = ck.name ? (ck.kind + "|" + ck.name) : null;
+    ["grpSaves","grpAbil","grpSkills","grpTools"].forEach(function(id){
+      Array.prototype.forEach.call($(id).children, function(b){
+        var on = (b._key === key);
+        b.className = "chk" + (b._prof ? " prof" : "") + (on ? " on" : "");
+        b.setAttribute("aria-pressed", on ? "true" : "false");
+      });
+    });
+
+    var kindLabel = { save:"saving throw", abil:"ability check",
+                      skill:"skill check", tool:"tool check" }[ck.kind] || "";
+    $("ckPicked").textContent = ck.name ? (ck.name + " " + kindLabel) : "nothing picked";
+    $("ckDCval").textContent = (ckDC === null) ? "–" : ckDC;
+
+    var rows = "", total = null;
+    if(!ck.name){
+      rows = '<div class="fx none"><span class="t">pick a check, save or skill below</span>' +
+             '<span class="v">&ndash;</span></div>';
+    } else {
+      var mod = ABIL[ck.abil].m + (ck.prof ? PROF : 0);
+      rows += '<div class="fx' + (ckFace === null ? " none" : "") + '">' +
+              '<span class="t">d20 rolled</span><span class="v">' +
+              (ckFace === null ? "&ndash;" : ckFace) + '</span></div>';
+      rows += '<div class="fx"><span class="t">' + ABIL[ck.abil].n + '</span>' +
+              '<span class="v">' + sgn(ABIL[ck.abil].m) + '</span></div>';
+      if(ck.prof){
+        rows += '<div class="fx"><span class="t">Proficiency</span>' +
+                '<span class="v">' + sgn(PROF) + '</span></div>';
+      }
+      if(ckFace !== null){
+        total = ckFace + mod;
+        rows += '<div class="fx sum"><span class="t">' + esc(ck.name) + " " +
+                (ck.kind === "save" ? "save" : "check") + '</span>' +
+                '<span class="v">' + total + '</span></div>';
+      }
+    }
+    $("ckFormula").innerHTML = rows;
+    paintBoosts(total);
+
+    var big = $("ckBig"), math = $("ckMath");
+    if(total === null){
+      big.textContent = "–"; big.className = "n empty";
+      math.innerHTML = ck.name ? "Swipe the d20 face you rolled"
+                               : "Pick a check below, then the d20 face you rolled";
+    } else {
+      big.textContent = total; big.className = "n";
+      if(ckDC === null){
+        math.innerHTML = "<b>" + ckFace + "</b> rolled · set a DC to call it";
+      } else {
+        var pass = total >= ckDC;
+        math.innerHTML = "<b>" + ckFace + "</b> rolled · vs DC " + ckDC + " — " +
+          "<b style='color:" + (pass ? "#5FBF7A" : "var(--dim)") + "'>" +
+          (pass ? "success" : "failure") + "</b>";
+      }
+    }
+  }
+
+  /* Build the note list for whatever is picked, newest-relevant first:
+     a natural 1 outranks everything, then the outcome of an Evasion save,
+     then the standing traits for that ability or skill. */
+  function boostsFor(total){
+    var out = [];
+    if(!ck.name) return out;
+
+    if(ckFace === 1){
+      out.push(["now", "Halfling Luck",
+        "You rolled a natural 1 — <b>reroll it</b> and you must use the new roll. " +
+        "Works on every attack roll, check and save."]);
+    }
+
+    if(ck.kind === "save" && ck.abil === "dex" && total !== null && ckDC !== null){
+      out.push(["now", "Evasion",
+        total >= ckDC
+          ? "You made it. If the effect allows a Dex save for half, you take <b>no damage at all</b>."
+          : "You missed it. If the effect allows a Dex save for half, you still take <b>half</b>, " +
+            "which is what everyone else takes on a success."]);
+    }
+
+    var std = CK_NOTES[ck.kind + "|" + ck.abil] || [];
+    if(ck.kind === "skill" || ck.kind === "tool"){
+      std = CK_SKILL_NOTES[ck.name] || [];
+    }
+    std.forEach(function(r){ out.push(["std", r[0], r[1]]); });
+
+    if(!out.length && ckFace !== 1){
+      out.push(["std", "Halfling Luck",
+        "A natural 1 on this roll can be rerolled — the only thing riding on it."]);
+    }
+    return out;
+  }
+
+  function paintBoosts(total){
+    var host = $("ckBoosts");
+    var list = boostsFor(total);
+    if(!list.length){ host.innerHTML = ""; return; }
+    var head = '<div class="sect">What you bring to it</div>';
+    host.innerHTML = head + list.map(function(r){
+      return '<div class="rule-note' + (r[0] === "now" ? " live" : "") + '">' +
+             '<span class="k">' + esc(r[1]) + '</span>' + r[2] + '</div>';
+    }).join("");
+  }
+
+  var ckDCwheel = null, ckD20wheel = null;
+  function ckLayout(){
+    if(ckDCwheel) ckDCwheel.layout();
+    if(ckD20wheel) ckD20wheel.layout();
+  }
+
+  (function(){
+    buildChecks();
+    ckDCwheel = buildWheel({
+      min:5, max:30, start:15, label:"Difficulty class",
+      onChange:function(){ ckDC = ckDCwheel.get(); paintChecks(); }
+    });
+    $("ckDCwheel").appendChild(ckDCwheel.el);
+    ckD20wheel = buildWheel({
+      min:1, max:20, start:10, hot:[1,20], label:"d20 face",
+      onChange:function(){ ckFace = ckD20wheel.get(); paintChecks(); }
+    });
+    $("ckD20wheel").appendChild(ckD20wheel.el);
+    paintChecks();
+  })();
 
   $("addAttack").addEventListener("click", function(){
     var c = makeCard();
